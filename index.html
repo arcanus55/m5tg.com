@@ -126,13 +126,33 @@
                 </div>
             </section>
         </article>
+ <footer class="l-main__footer h-center">
+        <nav class="footer__nav">
+  <a href="https://www.MachFiveTech.com" target="_blank">Tech</a>
+  <a href="https://www.machfivemarketing.com/" target="_blank">Marketing</a>
+  <a href="https://neodigm.github.io/www.neostudios.com/" target="_blank">Studios</a>
+  <a href="https://www.MachVive.com" target="_blank">Machvive</a>
+  <a href="https://www.WebToolToys.com/" target="_blank">Web Tool Toys</a>
+</nav>
 
-        <footer class="l-main__footer h-center">
-            <br><br>
-            <p class="readable__doc txt--white">© 2025 Mach Five Tech Group — Chicago</p>
-        </footer>
-    </main>
-    
+<footer class="l-main__footer">
+  <div class="footer__content h-center">
+    <nav class="footer__nav">
+      <a href="https://www.MachFiveTech.com" target="_blank">Tech</a>
+      <a href="https://www.machfivemarketing.com/" target="_blank">Marketing</a>
+      <a href="https://neodigm.github.io/www.neostudios.com/" target="_blank">Studios</a>
+      <a href="https://www.MachVive.com" target="_blank">Machvive</a>
+      <a href="https://www.WebToolToys.com/" target="_blank">Tools</a>
+    </nav>
+    <p class="footer__about">Mach Five Tech Group is a consulting and development engine designed to move complex ideas from zero to scalable. Based in Chicago. Operating globally.</p>
+    <p class="footer__contact">
+      <a href="mailto:contact@machfivetech.com">contact@machfivetech.com</a>
+    </p>
+    <p class="footer__legal">© 2025 Mach Five Tech Group — Chicago, IL</p>
+  </div>
+</footer>
+
+   
 <script>
     const contact_form_iframe_sfdcCustom = {"contact_cta_theme": ["danger"],"contact_cta_oid": ["00D6A000002intt"]}
 </script>
@@ -256,6 +276,53 @@
         min-height: 124px;
     }
 
+.l-main__footer {
+  background-color: var(--neodigm-theme-night, #000);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.footer__content {
+  max-width: 960px;
+  margin: auto;
+}
+
+.footer__nav {
+  margin-bottom: 1rem;
+}
+
+.footer__nav a {
+  color: #ddd;
+  margin: 0 0.75rem;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+.footer__nav a:hover {
+  color: var(--neodigm-theme-danger, #DD4124);
+}
+
+.footer__about,
+.footer__contact,
+.footer__legal {
+  font-size: 0.9em;
+  font-weight: 300;
+  color: #aaa;
+  margin: 0.5rem 0;
+}
+
+.footer__contact a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer__contact a:hover {
+  text-decoration: underline;
+}
+
+
+    
     @media only screen and (min-width: 48.1em) {
         .l-main__header h1 {
             font-size: 42px;
