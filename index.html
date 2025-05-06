@@ -133,17 +133,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </section>
             
-            <section class="pfmf-grid pfmf-grid__30_70">
-                <div class="card__clickable h-center">
-                    <a class="readable__doc" href="blank" target="_blank">Mach Five Marketing</a>
-                    <br>
-                </div>
-                <div class="card__clickable h-center">
-                    <br>
-                    <p class="readable__doc">Creative growth strategies and digital campaigns to capture attention and drive action.</p>
-                </div>
-            </section>
-            -->
+<section class="pfmf-grid pfmf-grid__brand-tiles">
+  <div class="brand-card">
+    <a href="https://www.MachFiveTech.com" target="_blank">Mach Five Tech</a>
+    <p class="readable__doc">Technical consulting, infrastructure, and systems design for high-velocity product delivery.</p>
+  </div>
+  <div class="brand-card">
+    <a href="https://www.machfivemarketing.com/" target="_blank">Mach Five Marketing</a>
+    <p class="readable__doc">Creative growth strategies and digital campaigns to capture attention and drive action.</p>
+  </div>
+</section>
+
            <!--
             <section class="pfmf-grid pfmf-grid__100">
                 <div class="card__clickable h-center">
@@ -339,6 +339,44 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         text-decoration: underline;
     }
 
+.pfmf-grid__brand-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.brand-card {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.brand-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  border-color: #ddd;
+}
+
+.brand-card a {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--neodigm-theme-night, #000);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.brand-card a:hover {
+  color: var(--neodigm-theme-danger, #DD4124);
+  text-decoration: underline;
+}
+
+    
     .readable__doc {
         color: #494949;
         margin: 4px;
