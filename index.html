@@ -175,23 +175,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </section>
         </article>
 
-<footer class="l-main__footer">
-  <div class="footer__content h-center">
-    <nav class="footer__nav">
-      <a href="https://www.MachFiveTech.com" target="_blank">Tech</a>
-      <a href="https://www.machfivemarketing.com/" target="_blank">Marketing</a>
-      <a href="https://www.MachVive.com" target="_blank">MachVive</a>
-      <a href="https://www.WebToolToys.com/" target="_blank">Web Tool Tools</a>
-    </nav>
-    <p class="footer__about">Mach Five Tech Group is a consulting and development engine designed to move complex ideas from zero to scalable.</p>
-    <p class="footer__about">Based in Chicago. Operating globally.</p>
-    <p class="footer__contact">
-      <a href="mailto:support@machfivetech.com">support@machfivetech.com</a>
-    </p>
-    <p class="footer__legal">© 2025 Mach Five Tech Group — Chicago, IL</p>
+<footer class="footer">
+  <div class="footer__main">
+    <div class="footer__column">
+      <div class="footer__logo">Mach Five Tech Group</div>
+      <p class="footer__about">Mach Five Tech Group is a consulting and development engine designed to move complex ideas from zero to scalable.</p>
+      <p class="footer__about">Based in Chicago. Operating globally.</p>
+      <p class="footer__contact"><a href="mailto:support@machfivetech.com">support@machfivetech.com</a></p>
+    </div>
+    <div class="footer__column-group">
+      <div class="footer__column">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#brands">Brands</a></li>
+          <li><a href="#tools">Tools</a></li>
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__column">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://www.MachVive.com" target="_blank">MachVive</a></li>
+          <li><a href="https://www.WebToolToys.com/" target="_blank">Web Tool Toys</a></li>
+          <li><a href="https://www.MachFiveTech.com" target="_blank">Mach Five Tech</a></li>
+          <li><a href="https://www.machfivemarketing.com/" target="_blank">Mach Five Marketing</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <p>©2025 Mach Five Tech Group · <a href="#">Privacy Policy</a></p>
   </div>
 </footer>
-
    
 <script>
     const contact_form_iframe_sfdcCustom = {"contact_cta_theme": ["danger"],"contact_cta_oid": ["00D6A000002intt"]}
@@ -311,59 +327,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         color: #fff;
     }
 
-    .l-main__footer {
-        background-color: var(--neodigm-theme-night, #000);
-        min-height: 124px;
-    }
-
-.l-main__footer {
-  background-color: var(--neodigm-theme-night, #000);
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
+ .footer {
+  background-color: #000;
+  color: #aaa;
+  font-family: 'Helvetica Neue', sans-serif;
 }
 
-.footer__content {
+.footer__main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   max-width: 960px;
   margin: auto;
+  padding: 3rem 1rem 2rem;
 }
 
-.footer__nav {
+.footer__column {
+  margin-bottom: 1.5rem;
+  min-width: 200px;
+  flex: 1;
+}
+
+.footer__column-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4rem;
+}
+
+.footer__logo {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fff;
   margin-bottom: 1rem;
 }
 
-.footer__nav a {
-   color: #ddd;
-  margin: 0 0.75rem;
-  text-decoration: none;
-  font-weight: 300;
-  font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', 'Roboto Condensed', sans-serif;
-  font-size: 1rem;
-  transition: color 0.2s ease;
-}
-
-.footer__nav a:hover {
-  color: var(--neodigm-theme-danger, #DD4124);
-}
-
-.footer__about,
-.footer__contact,
-.footer__legal {
-  font-size: 0.9em;
-  font-weight: 300;
-  color: #aaa
-  margin: 0.5rem 0;
+.footer__about {
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: #aaa;
+  margin-bottom: 0.5rem;
 }
 
 .footer__contact a {
   color: #fff;
+  font-size: 0.95em;
   text-decoration: none;
 }
 
 .footer__contact a:hover {
   text-decoration: underline;
+  color: var(--neodigm-theme-danger, #DD4124);
 }
 
+.footer__column h4 {
+  font-weight: 400;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.footer__column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__column li {
+  margin-bottom: 0.5rem;
+}
+
+.footer__column a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 0.95em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.footer__column a:hover {
+  color: var(--neodigm-theme-danger, #DD4124);
+}
+
+.footer__bottom {
+  border-top: 1px solid #333;
+  text-align: center;
+  font-size: 0.85em;
+  padding: 1rem 0;
+  color: #666;
+}
 .section-divider {
   border: 0;
   height: 2px;
