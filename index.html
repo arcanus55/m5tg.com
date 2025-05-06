@@ -403,6 +403,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 }
 
 .footer__column a {
+  position: relative;
+  display: inline-block;
   color: #aaa;
   text-decoration: none;
   font-size: 0.95em;
@@ -411,6 +413,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   transition: color 0.2s ease;
 }
 
+.footer__column a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 0;
+  background-color: var(--neodigm-theme-danger, #DD4124);
+  transition: width 0.3s ease;
+}
+
+.footer__column a:hover::after {
+  width: 100%;
+}
+    
 .footer__column a:hover {
   color: var(--neodigm-theme-danger, #DD4124);
 }
