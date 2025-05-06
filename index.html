@@ -357,12 +357,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         color: #fff;
     }
 
- .footer {
+.footer {
   background-color: #000;
-position: relative;
+  background-image: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0%, transparent 60%),
+                    radial-gradient(circle at 80% 70%, rgba(255,255,255,0.015) 0%, transparent 60%);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
   color: #aaa;
   font-family: 'Helvetica Neue', sans-serif;
 }
+
+
 
 .footer__main {
   display: flex;
