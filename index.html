@@ -313,9 +313,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         padding: 8px 28px;
     }
 
-    .card__clickable:hover {
-        border: solid 1px #aaa;
-    }
+.card__clickable {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #eee;
+  text-align: center;
+}
+
+.card__clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  border-color: #ddd;
+}
+
 
     .card__clickable > a {
         text-decoration: none;
