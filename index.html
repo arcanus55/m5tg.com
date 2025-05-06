@@ -313,18 +313,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         padding: 8px 28px;
     }
 
-    .card__clickable:hover {
-        border: solid 1px #aaa;
-    }
-
-    .card__clickable > a {
-        text-decoration: none;
-    }
-
     .card__clickable:hover > a {
         color: var(--neodigm-theme-danger, #DD4124);
         text-decoration: underline;
     }
+
+    .pfmf-grid__30_70 {
+  align-items: center;
+}
+
+    .pfmf-grid__30_70 > div:first-child {
+  border-right: 1px solid #e6e6e6;
+}
+
+    
+.card__clickable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 100%;
+}
+
+.card__clickable a {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--neodigm-theme-night, #000);
+}
+
+.card__clickable p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #444;
+  margin: 0;
+}
+
+.card__clickable:hover {
+  background-color: #fafafa;
+  transition: background-color 0.2s ease;
+}
+
 
     .readable__doc {
         color: #494949;
