@@ -593,16 +593,18 @@ position: relative;
   }
 }
 
-    @media (min-width: 768px) {
+@media (min-width: 768px) {
   .footer__main {
-    border-left: 1px solid #333;
-    padding-left: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 3rem;
+    position: relative;
   }
 
-  .footer__logo,
-  .footer__about,
-  .footer__contact {
-    margin-left: -2rem; /* pulls left column back to align */
+  .footer__column:first-child {
+    padding-right: 2rem;
+    margin-right: 2rem;
+    border-right: 1px solid #333;
   }
 }
 
