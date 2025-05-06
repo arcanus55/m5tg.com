@@ -568,13 +568,15 @@ position: relative;
         }
     }
 </style>
-        window.addEventListener('scroll', function() {
-  const nav = document.querySelector('.main-nav');
-  if (window.scrollY > 10) {
-    nav.style.padding = '0.5rem 1rem';
-  } else {
-    nav.style.padding = '0.75rem 1rem';
-  }
-});
+       <script>
+  window.addEventListener('scroll', function() {
+    const nav = document.querySelector('.main-nav');
+    if (window.scrollY > 10) {
+      nav.style.padding = '0.5rem 1rem';
+    } else {
+      nav.style.padding = '0.75rem 1rem';
+    }
+  });
+</script>
 </body>
 </html>
