@@ -341,7 +341,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 .section-divider {
   border: 0;
   height: 2px;
-  width: 100vw;
+  width: 100%;
   background-color: var(--neodigm-theme-danger, #DD4124);
   margin: 0;
   padding: 0;
@@ -350,7 +350,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     background: linear-gradient(to right, #DD4124, #FF6F61);
 }
 
-
+body {
+  overflow-x: hidden;
+}
 
     @media only screen and (min-width: 48.1em) {
         .l-main__header h1 {
