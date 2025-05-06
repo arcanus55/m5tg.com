@@ -114,6 +114,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 ><span>Let's Talk</span><span>Contact Us</span>
                 </a>
             </nav>
+
+ <section class="m5tg-brand-panel">
+  <h2 class="readable__doc section-heading">Two Brands. One Engine.</h2>
+  <p class="readable__doc section-subheading">
+    Each brand in the Mach Five Group is a specialized gear in a larger machine. Together, we move ideas from zero to scale.
+  </p>
+  <div class="m5tg-brand-grid">
+    <div class="brand-card tech">
+      <div class="brand-header">Infrastructure & Systems</div>
+      <img src="https://www.machfivetech.com/img/server_icon.svg" alt="Mach Five Tech Icon" class="brand-icon">
+      <h3 class="brand-title">Mach Five Tech</h3>
+      <p class="readable__doc">We architect custom systems for high-velocity products.</p>
+    </div>
+    <div class="brand-card marketing">
+      <div class="brand-header">Demand & Growth</div>
+      <img src="https://www.machfivemarketing.com/img/megaphone_icon.svg" alt="Mach Five Marketing Icon" class="brand-icon">
+      <h3 class="brand-title">Mach Five Marketing</h3>
+      <p class="readable__doc">We build MarTech tools that convert attention into opportunity.</p>
+    </div>
+  </div>
+</section>
+           
             <section class="pfmf-grid pfmf-grid__100">
                 <aside>
                     <br><h2 class="readable__doc">Our Brands</h2>
@@ -327,6 +349,75 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         text-decoration: underline;
     }
 
+   
+    .m5tg-brand-panel {
+  text-align: center;
+  margin: 4rem auto;
+  padding: 2rem 1rem;
+  max-width: 1080px;
+}
+
+.section-heading {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--neodigm-theme-night, #000);
+}
+
+.section-subheading {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #444;
+}
+
+.m5tg-brand-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.brand-card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.brand-header {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  padding: 0.4rem;
+  border-radius: 4px;
+}
+
+.brand-icon {
+  width: 60px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0.5rem 0;
+  color: #222;
+}
+
+.brand-card.tech .brand-header {
+  background-color: #DD4124;
+}
+
+.brand-card.marketing .brand-header {
+  background-color: #F5AF29;
+}
+
+    
     .readable__doc {
         color: #494949;
         margin: 4px;
