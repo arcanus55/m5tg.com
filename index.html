@@ -53,7 +53,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="apple-mobile-web-app-title" content="Mach Five Tech Group" />
 
-<nav class="main-nav">
+<!-- NAV REMOVED FROM HEAD -->
   <div class="nav-container">
     <div class="logo">Mach Five Tech Group</div>
     <button class="nav-toggle" aria-label="Toggle menu">
@@ -78,6 +78,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     
 <body>
+
+<!-- BEGIN: Navigation -->
+<nav class="main-nav">
+  <div class="nav-container">
+    <div class="logo">Mach Five Tech Group</div>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <span class="hamburger"></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#brands">Brands</a></li>
+      <li><a href="#tools">Tools</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- END: Navigation -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector('.nav-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('open');
+    });
+  });
+</script>
+
     <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVVMXL5V"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
