@@ -563,7 +563,20 @@ position: relative;
     display: flex;
   }
 }
-    
+
+    @media (min-width: 768px) {
+  .footer__main {
+    border-left: 1px solid #333;
+    padding-left: 2rem;
+  }
+
+  .footer__logo,
+  .footer__about,
+  .footer__contact {
+    margin-left: -2rem; /* pulls left column back to align */
+  }
+}
+
 
     @media only screen and (min-width: 48.1em) {
         .l-main__header h1 {
@@ -575,6 +588,7 @@ position: relative;
         }
     }
 </style>
+        
        <script>
   window.addEventListener('scroll', function() {
     const nav = document.querySelector('.main-nav');
