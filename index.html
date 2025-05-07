@@ -118,8 +118,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <section class="pfmf-grid pfmf-grid__50_50">
   <div>
-    <h2 class="readable__doc">Mach Five Tech</h2>
+    <img src="mach-five-tech.png" alt="Mach Five Tech dashboard screenshot" class="brand-block__img" />
+  </div>
+  <div>
+    <h3 class="readable__doc"><span class="txt--danger">Mach Five Tech</span></h3>
     <p class="readable__doc">Technical consulting, infrastructure, and systems design for high-velocity product delivery.</p>
+    <ul class="brand-block__bullets readable__doc">
+      <li>Architect scalable app infrastructure for speed and uptime</li>
+      <li>Embed technical PMs to accelerate shipping velocity</li>
+      <li>Integrate DevOps pipelines to reduce deployment friction</li>
+    </ul>
     <nav class="h-center">
       <a id="js-btn__contact"
          onClick="contact_form_iframe_sfdc.openCTA()"
@@ -132,18 +140,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </nav>
   </div>
-  <div>
-    <img src="mach-five-tech.png" alt="Mach Five Tech skyline" style="display: block; max-width: 80%; height: auto; margin: 0 auto;" />
-  </div>
 </section>
 
 <section class="pfmf-grid pfmf-grid__50_50">
-   <div>
-    <img src="mach-five-marketing.png" alt="Mach Five Marketing Logo" style="display: block; max-width: 80%; height: auto; margin: 0 auto;" />
-  </div>
-    <div>
-    <h2 class="readable__doc">Mach Five Marketing</h2>
+  <div>
+    <h3 class="readable__doc"><span class="txt--danger">Mach Five Marketing</span></h3>
     <p class="readable__doc">MarTech tools that help agencies and businessess manage clients and convert leads faster.</p>
+    <ul class="brand-block__bullets readable__doc">
+      <li>Custom CRM tools and reporting dashboards</li>
+      <li>Lead routing and scoring automation</li>
+      <li>SEO/SEM content tooling and ops support</li>
+    </ul>
     <nav class="h-center">
       <a id="js-btn__contact"
          onClick="contact_form_iframe_sfdc.openCTA()"
@@ -156,7 +163,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </nav>
   </div>
-</section>        
+  <div>
+    <img src="mach-five-marketing.png" alt="Mach Five Marketing screenshot" class="brand-block__img" />
+  </div>
+</section>
+
 
              <!--
             <section class="pfmf-grid pfmf-grid__30_70">
@@ -720,6 +731,40 @@ position: relative;
             line-height: 1.75;
         }
     }
+
+.brand-block__img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
+}
+
+.brand-block__bullets {
+  list-style: none;
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+
+.brand-block__bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.brand-block__bullets li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--neodigm-theme-danger, #DD4124);
+  font-weight: bold;
+}
+
+
+    
 </style>
         
        <script>
