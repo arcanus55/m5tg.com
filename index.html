@@ -116,14 +116,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </aside>
             </section>
 
-<section class="pfmf-grid pfmf-grid__50_50 brand-block brand-tech">
+<section class="pfmf-grid pfmf-grid__50_50">
   <div>
-    <img src="mach-five-tech.png" alt="Mach Five Tech Logo" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
+    <img src="mach-five-tech.png" alt="Mach Five Tech dashboard screenshot" class="brand-block__img" width="80%" />
   </div>
   <div>
-    <h2 class="readable__doc"><span>Mach</span> <span class="brand-five-tech">Five</span> Tech</h2>
+    <h3 class="readable__doc"><span class="txt--danger">Mach Five Tech</span></h3>
     <p class="readable__doc">Technical consulting, infrastructure, and systems design for high-velocity product delivery.</p>
-    <ul class="brand-points tech-points">
+    <ul class="brand-block__bullets readable__doc">
       <li>Architect scalable app infrastructure for speed and uptime</li>
       <li>Embed technical PMs to accelerate shipping velocity</li>
       <li>Integrate DevOps pipelines to reduce deployment friction</li>
@@ -142,14 +142,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="pfmf-grid pfmf-grid__50_50 brand-block brand-marketing">
+<section class="pfmf-grid pfmf-grid__50_50">
   <div>
-    <img src="mach-five-marketing.png" alt="Mach Five Marketing Logo" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);" />
-  </div>
-  <div>
-    <h2 class="readable__doc"><span>Mach</span> <span class="brand-five-marketing">Five</span> Marketing</h2>
-    <p class="readable__doc">MarTech tools that help agencies and businesses manage clients and convert leads faster.</p>
-    <ul class="brand-points marketing-points">
+    <h3 class="readable__doc"><span class="txt--danger">Mach Five Marketing</span></h3>
+    <p class="readable__doc">MarTech tools that help agencies and businessess manage clients and convert leads faster.</p>
+    <ul class="brand-block__bullets readable__doc">
       <li>Custom CRM tools and reporting dashboards</li>
       <li>Lead routing and scoring automation</li>
       <li>SEO/SEM content tooling and ops support</li>
@@ -166,9 +163,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </nav>
   </div>
+  <div>
+    <img src="mach-five-marketing.png" alt="Mach Five Marketing screenshot" class="brand-block__img" width="80%" />
+  </div>
 </section>
-
-
 
 
              <!--
@@ -734,65 +732,37 @@ position: relative;
         }
     }
 
-.brand-block {
-  align-items: center;
-  padding: 2rem 0;
-  gap: 2rem;
+.brand-block__img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  margin: 0 auto;
 }
 
-.brand-block h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-.brand-five-tech {
-  color: #d83e22;
-  font-weight: 500;
-}
-
-.brand-five-marketing {
-  color: #204866;
-  font-weight: 500;
-}
-
-.brand-points {
+.brand-block__bullets {
   list-style: none;
-  padding: 0;
-  margin: 1rem 0 1.5rem;
+  padding-left: 1.25rem;
+  margin: 1rem 0;
 }
 
-.brand-points li {
+.brand-block__bullets li {
   position: relative;
-  padding-left: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-  color: #444;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1em;
+  line-height: 1.6;
 }
 
-.tech-points li::before {
+.brand-block__bullets li::before {
   content: "✓";
-  color: #d83e22;
   position: absolute;
   left: 0;
+  color: var(--neodigm-theme-danger, #DD4124);
   font-weight: bold;
 }
 
-.marketing-points li::before {
-  content: "✓";
-  color: #204866;
-  position: absolute;
-  left: 0;
-  font-weight: bold;
-}
-
-@media (max-width: 768px) {
-  .brand-block {
-    flex-direction: column;
-    text-align: center;
-  }
-}
 
     
 </style>
