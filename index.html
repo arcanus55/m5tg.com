@@ -116,14 +116,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </aside>
             </section>
 
-<section class="pfmf-grid pfmf-grid__50_50">
-  <div>
-    <img src="mach-five-tech.png" alt="Mach Five Tech dashboard screenshot" class="brand-block__img" width="80%" />
+<section class="pfmf-grid pfmf-grid__50_50 brand-modern">
+  <div class="brand-modern__image-container">
+    <img src="mach-five-tech.png" alt="Mach Five Tech" class="brand-modern__image" />
   </div>
   <div>
-    <h3 class="readable__doc"><span class="txt--danger">Mach Five Tech</span></h3>
+    <h3 class="readable__doc"><strong>FOR THE <span style="color:#DD4124;">ENGINEERS</span></strong></h3>
     <p class="readable__doc">Technical consulting, infrastructure, and systems design for high-velocity product delivery.</p>
-    <ul class="brand-block__bullets readable__doc">
+    <ul class="brand-modern__bullets readable__doc">
       <li>Architect scalable app infrastructure for speed and uptime</li>
       <li>Embed technical PMs to accelerate shipping velocity</li>
       <li>Integrate DevOps pipelines to reduce deployment friction</li>
@@ -131,7 +131,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav class="h-center">
       <a id="js-btn__contact"
          onClick="contact_form_iframe_sfdc.openCTA()"
-         data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+         data-n55-enchanted-cta
+         data-n55-enchanted-cta-dont-touch="true"
+         data-n55-enchanted-cta-shape-off="true"
+         data-n55-enchanted-cta-hover-an="true"
          data-n55-enchanted-cta-size="small"
          data-n55-flash-theme="danger"
          data-n55-theme="ghost"
@@ -142,11 +145,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="pfmf-grid pfmf-grid__50_50">
+<section class="pfmf-grid pfmf-grid__50_50 brand-modern">
+  <div class="brand-modern__image-container brand-modern--blue">
+    <img src="mach-five-marketing.png" alt="Mach Five Marketing" class="brand-modern__image" />
+  </div>
   <div>
-    <h3 class="readable__doc"><span class="txt--danger">Mach Five Marketing</span></h3>
-    <p class="readable__doc">MarTech tools that help agencies and businessess manage clients and convert leads faster.</p>
-    <ul class="brand-block__bullets readable__doc">
+    <h3 class="readable__doc"><strong>FOR THE <span style="color:#204866;">AGENCIES</span></strong></h3>
+    <p class="readable__doc">MarTech tools that help agencies and businesses manage clients and convert leads faster.</p>
+    <ul class="brand-modern__bullets readable__doc">
       <li>Custom CRM tools and reporting dashboards</li>
       <li>Lead routing and scoring automation</li>
       <li>SEO/SEM content tooling and ops support</li>
@@ -154,7 +160,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <nav class="h-center">
       <a id="js-btn__contact"
          onClick="contact_form_iframe_sfdc.openCTA()"
-         data-n55-enchanted-cta data-n55-enchanted-cta-dont-touch="true" data-n55-enchanted-cta-shape-off="true" data-n55-enchanted-cta-hover-an="true"
+         data-n55-enchanted-cta
+         data-n55-enchanted-cta-dont-touch="true"
+         data-n55-enchanted-cta-shape-off="true"
+         data-n55-enchanted-cta-hover-an="true"
          data-n55-enchanted-cta-size="small"
          data-n55-flash-theme="danger"
          data-n55-theme="ghost"
@@ -163,10 +172,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </a>
     </nav>
   </div>
-  <div>
-    <img src="mach-five-marketing.png" alt="Mach Five Marketing screenshot" class="brand-block__img" width="80%" />
-  </div>
 </section>
+
 
 
              <!--
@@ -763,7 +770,64 @@ position: relative;
   font-weight: bold;
 }
 
+.brand-modern__image-container {
+  position: relative;
+  text-align: center;
+  margin-bottom: 1rem;
+}
 
+.brand-modern__image-container::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background-color: #DD4124;
+  opacity: 0.15;
+  z-index: 0;
+}
+
+.brand-modern--blue::before {
+  background-color: #204866;
+  opacity: 0.12;
+}
+
+.brand-modern__image {
+  position: relative;
+  z-index: 1;
+  max-width: 80%;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.brand-modern__bullets {
+  list-style: none;
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+
+.brand-modern__bullets li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+.brand-modern__bullets li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--neodigm-theme-danger, #DD4124);
+  font-weight: bold;
+}
+
+
+
+    
     
 </style>
         
