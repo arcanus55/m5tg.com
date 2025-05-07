@@ -116,12 +116,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </aside>
             </section>
 
-<section class="pfmf-grid pfmf-grid__50_50">
+<section class="pfmf-grid pfmf-grid__50_50 brand-tech">
   <div>
     <img src="mach-five-tech.png" alt="Mach Five Tech dashboard screenshot" class="brand-block__img" width="80%" />
   </div>
   <div>
-    <h3 class="readable__doc"><span class="txt--danger">Mach Five Tech</span></h3>
+    <h3 class="readable__doc brand-tech"><span style="color: var(--mach-tech-color)">Mach Five Tech</span></h3>
     <p class="readable__doc">Technical consulting, infrastructure, and systems design for high-velocity product delivery.</p>
     <ul class="brand-block__bullets readable__doc">
       <li>Architect scalable app infrastructure for speed and uptime</li>
@@ -142,9 +142,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="pfmf-grid pfmf-grid__50_50">
+<section class="pfmf-grid pfmf-grid__50_50 brand-marketing">
   <div>
-    <h3 class="readable__doc"><span class="txt--danger">Mach Five Marketing</span></h3>
+    <h3 class="readable__doc brand-marketing"><span style="color: var(--mach-marketing-color)">Mach Five Marketing</span></h3>
     <p class="readable__doc">MarTech tools that help agencies and businessess manage clients and convert leads faster.</p>
     <ul class="brand-block__bullets readable__doc">
       <li>Custom CRM tools and reporting dashboards</li>
@@ -525,11 +525,7 @@ body {
   background-color: #fff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-
-
-
-
-    
+ 
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -763,7 +759,37 @@ position: relative;
   font-weight: bold;
 }
 
+:root {
+  --mach-tech-color: #d83e22;
+  --mach-marketing-color: #204866;
+}
 
+    .brand-tech .brand-block__bullets li::before {
+  color: var(--mach-tech-color);
+}
+
+.brand-marketing .brand-block__bullets li::before {
+  color: var(--mach-marketing-color);
+}
+
+    .brand-tech {
+  background: rgba(216, 62, 34, 0.03);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.brand-marketing {
+  background: rgba(32, 72, 102, 0.03);
+  border-radius: 6px;
+  padding: 16px;
+}
+
+
+
+
+
+
+    
     
 </style>
         
