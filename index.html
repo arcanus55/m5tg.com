@@ -99,6 +99,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </section>
             <br>
+            <section id="contact">
             <nav class="h-center">
                 <a id="js-btn__contact"
                 onClick="contact_form_iframe_sfdc.openCTA()"
@@ -110,11 +111,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 ><span>Let's Talk</span><span>Contact Us</span>
                 </a>
             </nav>
-            <section class="pfmf-grid pfmf-grid__100">
-                <aside>
-                    <br><h2 class="readable__doc">Our Brands</h2>
-                </aside>
             </section>
+         <section id="brands" class="pfmf-grid pfmf-grid__100">
+  <aside>
+    <br><h2 class="readable__doc">Our Brands</h2>
+  </aside>
+</section>
+
 
 <section class="pfmf-grid pfmf-grid__50_50 brand-modern">
   <div class="brand-modern__image-container">
@@ -206,11 +209,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </section>
             -->
-            <section class="pfmf-grid pfmf-grid__100">
-                <aside>
-                    <br><h2 class="readable__doc">Our Tools</h2>
-                </aside>
-            </section>
+      <section id="tools" class="pfmf-grid pfmf-grid__100">
+  <aside>
+    <br><h2 class="readable__doc">Our Tools</h2>
+  </aside>
+</section>
+
             <section class="pfmf-grid pfmf-grid__50_50">
                 <div class="card__clickable h-center">
                     <a class="readable__doc" href="//" target="_blank">MachVive</a>
@@ -226,11 +230,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </section>
              <div class="subtle-texture-bg">
-            <section class="pfmf-grid pfmf-grid__100">
-                <aside>
-                    <br><h2 class="readable__doc">Our Philosophy</h2>
-                </aside>
-            </section>
+         <section id="about" class="pfmf-grid pfmf-grid__100">
+  <aside>
+    <br><h2 class="readable__doc">About Us</h2>
+  </aside>
+</section>
+<section class="pfmf-grid pfmf-grid__100">
+  <div>
+    <p class="readable__doc">Lasting software should be resilient, scalable...</p>
+
             <section class="pfmf-grid pfmf-grid__100">
                 <div>
                     <p class="readable__doc">Lasting software should be resilient, scalable, and meaningful, not just trendy. That’s why we avoid flavor-of-the-month frameworks and bleeding-edge distractions in favor of battle-tested technologies and design systems that scale. Our approach balances speed with intent, focusing on implementation strategies that stand up to real-world use without tying you to any single platform or fad.</p>
@@ -863,19 +871,28 @@ position: relative;
   --m5m-blue: #2a4f7a;
 }
 
+.nav-links a.active {
+  color: #fff;
+  background-color: var(--neodigm-theme-danger, #DD4124);
+}
+
+    
     
 </style>
         
-       <script>
+<script>
   window.addEventListener('scroll', function() {
     const nav = document.querySelector('.main-nav');
     if (window.scrollY > 10) {
       nav.style.padding = '0.5rem 1rem';
+      nav.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
     } else {
       nav.style.padding = '0.75rem 1rem';
+      nav.style.boxShadow = 'none';
     }
   });
 </script>
+
 
 <script>
   document.querySelector('.nav-toggle').addEventListener('click', function () {
@@ -883,6 +900,28 @@ position: relative;
     document.querySelector('.nav-links').classList.toggle('open');
   });
 </script>
+
+<script>
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.getAttribute("id");
+      const navLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove("active"));
+        if (navLink) navLink.classList.add("active");
+      }
+    });
+  }, {
+    rootMargin: "-50% 0px -50% 0px",
+    threshold: 0
+  });
+
+  sections.forEach(section => observer.observe(section));
+</script>
+
 
         
 </body>
