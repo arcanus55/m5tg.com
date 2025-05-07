@@ -112,7 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </a>
             </nav>
       
-         <section id="brands" class="pfmf-grid pfmf-grid__100">
+<section id="brands" class="pfmf-grid pfmf-grid__100 bg-light">
   <aside>
     <br><h2 class="readable__doc">Our Brands</h2>
   </aside>
@@ -209,13 +209,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </section>
             -->
-      <section id="tools" class="pfmf-grid pfmf-grid__100">
+      <section id="tools" class="pfmf-grid pfmf-grid__100 bg-white">
+
   <aside>
     <br><h2 class="readable__doc">Our Tools</h2>
   </aside>
 </section>
 
-            <section class="pfmf-grid pfmf-grid__50_50">
+           <section class="pfmf-grid pfmf-grid__50_50 bg-white">
                 <div class="card__clickable h-center">
                     <a class="readable__doc" href="//" target="_blank">MachVive</a>
                     <br>
@@ -230,13 +231,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
             </section>
              <div class="subtle-texture-bg">
-         <section id="about" class="pfmf-grid pfmf-grid__100">
+        <section id="about" class="pfmf-grid pfmf-grid__100 bg-texture">
   <aside>
     <br><h2 class="readable__doc">About Us</h2>
   </aside>
 </section>
 
-            <section class="pfmf-grid pfmf-grid__100">
+           <section class="pfmf-grid pfmf-grid__100 bg-texture">
                 <div>
                     <p class="readable__doc">Lasting software should be resilient, scalable, and meaningful, not just trendy. That’s why we avoid flavor-of-the-month frameworks and bleeding-edge distractions in favor of battle-tested technologies and design systems that scale. Our approach balances speed with intent, focusing on implementation strategies that stand up to real-world use without tying you to any single platform or fad.</p>
                     <p class="readable__doc">We don’t waste time with stacks of half-designed wireframes and idle ideas. Instead, we prototype early using functional MVPs and proofs of concept built from reusable components in our own tools and widget library. These are real working builds with minimal throwaway code—designed to help you test, iterate, and launch quickly. We understand the business side of product development and focus on delivering functional, usable software that gets you to market faster with quality you can trust.</p>
@@ -871,6 +872,24 @@ position: relative;
 .nav-links a.active {
   color: #fff;
   background-color: var(--neodigm-theme-danger, #DD4124);
+}
+
+.bg-light {
+  background-color: #f9f9f9;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.bg-texture {
+  background: repeating-linear-gradient(
+    45deg,
+    #f9f9f9,
+    #f9f9f9 4px,
+    #f7f7f7 4px,
+    #f7f7f7 8px
+  );
 }
 
     
