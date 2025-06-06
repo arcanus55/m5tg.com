@@ -244,6 +244,38 @@
             position: relative;
         }
 
+        /* Light sections with grid background */
+        .about-section--light {
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-section--light::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px;
+            mask-image: linear-gradient(90deg, 
+                transparent 0%, 
+                black 15%, 
+                black 85%, 
+                transparent 100%);
+            -webkit-mask-image: linear-gradient(90deg, 
+                transparent 0%, 
+                black 15%, 
+                black 85%, 
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .about-section--dark {
             background: #0A0A0A;
             color: var(--m5-white);
@@ -319,7 +351,7 @@
             line-height: 1.7;
         }
 
-        /* Masonry Grid */
+        /* Masonry Grid - Updated for black and white */
         .masonry-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -334,6 +366,7 @@
             position: relative;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
+            filter: grayscale(100%);
         }
 
         .about-section--dark .masonry-item {
@@ -358,29 +391,29 @@
 
         .masonry-item:nth-child(1) { 
             grid-row: span 2; 
-            background-color: #FFF9E6;
+            background-color: #F5F5F5;
             transform: rotate(-2deg);
         }
 
         .masonry-item:nth-child(2) { 
-            background-color: #FFE6E6;
+            background-color: #EEEEEE;
             transform: rotate(1deg);
         }
 
         .masonry-item:nth-child(3) { 
             grid-column: span 2; 
-            background-color: #E6F3FF;
+            background-color: #E8E8E8;
             transform: rotate(-1deg);
         }
 
         .masonry-item:nth-child(4) { 
-            background-color: #E6FFE6;
+            background-color: #F0F0F0;
             transform: rotate(2deg);
         }
 
         .masonry-item:nth-child(5) { 
             grid-row: span 2; 
-            background-color: #F0E6FF;
+            background-color: #FAFAFA;
             transform: rotate(-1.5deg);
         }
 
@@ -388,13 +421,14 @@
             transform: translateY(-4px) rotate(0deg) scale(1.05);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             z-index: 10;
+            filter: grayscale(0%);
         }
 
         .masonry-item h4 {
             font-size: 0.875rem;
             font-weight: 600;
             margin-bottom: 0.375rem;
-            color: var(--m5-black);
+            color: var(--m5-accent);
         }
 
         .masonry-item p {
@@ -826,6 +860,31 @@
             border-radius: 16px;
         }
 
+        .open-source-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(42, 122, 79, 0.9);
+            color: white;
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .open-source-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
         .tool-card-enhanced:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
@@ -1034,6 +1093,20 @@
             letter-spacing: -0.02em;
             margin-bottom: 1rem;
             color: var(--m5-white);
+            position: relative;
+            display: inline-block;
+        }
+
+        .engagement-model__title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #DD4124, #23394e, transparent);
+            animation: shimmer 3s infinite;
         }
 
         .engagement-model__subtitle {
@@ -1231,6 +1304,21 @@
             margin-bottom: 3rem;
             text-align: center;
             position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .philosophy__title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #DD4124, #23394e, transparent);
+            animation: shimmer 3s infinite;
         }
 
         .philosophy__text {
@@ -1243,15 +1331,57 @@
         .philosophy__text strong {
             color: #DD4124;
             font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .philosophy__text strong::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #DD4124;
+            transition: width 0.3s ease;
+        }
+
+        .philosophy__text strong:hover::after {
+            width: 100%;
         }
 
         /* Contact Section */
         .contact {
             text-align: center;
             padding: 10rem 2rem;
-            background: #0A0A0A;
+            background: #FFFFFF;
             position: relative;
             overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px;
+            mask-image: linear-gradient(90deg, 
+                transparent 0%, 
+                black 15%, 
+                black 85%, 
+                transparent 100%);
+            -webkit-mask-image: linear-gradient(90deg, 
+                transparent 0%, 
+                black 15%, 
+                black 85%, 
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         .contact__title {
@@ -1259,13 +1389,45 @@
             font-weight: 300;
             letter-spacing: -0.02em;
             margin-bottom: 1rem;
-            color: var(--m5-white);
+            color: var(--m5-black);
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact__title .forward-text {
+            color: var(--m5-accent);
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact__title .forward-text::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #FFFFFF;
+            transition: none;
+        }
+
+        .contact__title .forward-text.animate::before {
+            animation: slideReveal 0.6s ease-out forwards;
+        }
+
+        @keyframes slideReveal {
+            to {
+                left: 100%;
+            }
         }
 
         .contact__subtitle {
             font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--m5-text-light);
             margin-bottom: 3rem;
+            position: relative;
+            z-index: 1;
         }
 
         .contact__email {
@@ -1277,6 +1439,8 @@
             font-weight: 500;
             font-size: 1.25rem;
             transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .contact__email:hover {
@@ -1367,10 +1531,27 @@
             text-decoration: none;
             font-size: 0.9375rem;
             transition: all 0.2s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer__links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--m5-accent);
+            transition: width 0.3s ease;
         }
 
         .footer__links a:hover {
             color: var(--m5-white);
+        }
+
+        .footer__links a:hover::after {
+            width: 100%;
         }
 
         .footer__bottom {
@@ -1504,7 +1685,7 @@
                 <li><a href="#about" class="nav__link">About</a></li>
                 <li><a href="#brands" class="nav__link">Brands</a></li>
                 <li><a href="#tools" class="nav__link">Tools</a></li>
-                <li><a href="#engagement" class="nav__link">How We Work</a></li>
+                <li><a href="#engagement" class="nav__link">How We Embed</a></li>
                 <li><a href="#philosophy" class="nav__link">Philosophy</a></li>
                 <li><a href="#contact" class="nav__link">Contact</a></li>
             </ul>
@@ -1844,6 +2025,12 @@
             <div class="tools__grid">
                 <!-- MachVive Card -->
                 <div class="tool-card-enhanced">
+                    <div class="open-source-badge">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        Open Source
+                    </div>
                     <div class="tool-header">
                         <div class="tool-icon">
                             <svg viewBox="0 0 24 24">
@@ -2014,7 +2201,7 @@
     <section class="engagement-model" id="engagement">
         <div class="container">
             <div class="engagement-model__header">
-                <h2 class="engagement-model__title">How We Engage</h2>
+                <h2 class="engagement-model__title">How We Embed</h2>
                 <p class="engagement-model__subtitle">From strategic planning to embedded teams, we meet you where you are.</p>
             </div>
             
@@ -2103,7 +2290,7 @@
                 </div>
                 <div class="engagement-detail">
                     <h3>For Strategic Partners</h3>
-                    <p>When there's alignment on vision and potential, we go deeper. These aren't vendor relationships—they're true partnerships with shared stakes and mutual commitment to seeing the work succeed.</p>
+                    <p>When there's alignment on vision and potential, we go deeper. These aren't vendor relationships; they're true partnerships with shared stakes and mutual commitment to seeing the work succeed.</p>
                     <ul>
                         <li>Equity-based partnerships</li>
                         <li>Long-term embedded teams</li>
@@ -2124,7 +2311,7 @@
                     Lasting software should be <strong>resilient</strong>, <strong>scalable</strong>, and <strong>meaningful</strong>, not just trendy. That's why we avoid flavor-of-the-month frameworks and bleeding-edge distractions in favor of battle-tested technologies and design systems that scale. Our approach balances <strong>speed with intent</strong>, focusing on implementation strategies that stand up to real-world use without tying you to any single platform or fad.
                 </p>
                 <p class="philosophy__text">
-                    We don't waste time with stacks of half-designed wireframes and idle ideas. Instead, we prototype early using <strong>functional MVPs</strong> and proofs of concept built from reusable components in our own tools and widget library. These are real working builds with minimal throwaway code—designed to help you <strong>test</strong>, <strong>iterate</strong>, and <strong>launch quickly</strong>. We understand the business side of product development and focus on delivering functional, usable software that gets you to market faster with quality you can trust.
+                    We don't waste time with stacks of half-designed wireframes and idle ideas. Instead, we prototype early using <strong>functional MVPs</strong> and proofs of concept built from reusable components in our own tools and widget library. These are real working builds with minimal throwaway code, designed to help you <strong>test</strong>, <strong>iterate</strong>, and <strong>launch quickly</strong>. We understand the business side of product development and focus on delivering functional, usable software that gets you to market faster with quality you can trust.
                 </p>
             </div>
         </div>
@@ -2133,7 +2320,7 @@
     <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container container--narrow">
-            <h2 class="contact__title">Ready to Move Forward?</h2>
+            <h2 class="contact__title">Ready to Move <span class="forward-text">Forward?</span></h2>
             <p class="contact__subtitle">Let's discuss how we can accelerate your vision.</p>
             <a href="mailto:hello@machfivegroup.com" class="contact__email">
                 hello@machfivegroup.com
@@ -2165,7 +2352,7 @@
                     <li><a href="#about">About</a></li>
                     <li><a href="#brands">Brands</a></li>
                     <li><a href="#tools">Tools</a></li>
-                    <li><a href="#engagement">How We Work</a></li>
+                    <li><a href="#engagement">How We Embed</a></li>
                     <li><a href="#philosophy">Philosophy</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -2223,6 +2410,26 @@
                 }
             });
         });
+
+        // Intersection Observer for Forward text animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const forwardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    forwardObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        const forwardText = document.querySelector('.forward-text');
+        if (forwardText) {
+            forwardObserver.observe(forwardText);
+        }
     </script>
 </body>
 </html>
