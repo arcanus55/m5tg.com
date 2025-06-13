@@ -163,7 +163,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section - Keep dark as requested */
+        /* Hero Section - Updated with background image */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -174,6 +174,37 @@
             overflow: hidden;
         }
 
+        /* Background image with parallax */
+        .hero-background {
+            position: absolute;
+            top: -10%;
+            left: -5%;
+            width: 110%;
+            height: 110%;
+            background-image: url('/img/m5t_hero-01.jpg');
+            background-size: cover;
+            background-position: center;
+            will-change: transform;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        /* Overlay for additional darkening */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(10, 10, 10, 0.4) 0%,
+                rgba(10, 10, 10, 0.85) 100%
+            );
+            z-index: 2;
+        }
+
+        /* Keep the animated gradient overlay */
         .hero::before {
             content: '';
             position: absolute;
@@ -185,6 +216,8 @@
                 radial-gradient(circle at 30% 40%, rgba(221, 65, 36, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 70% 60%, rgba(35, 57, 78, 0.15) 0%, transparent 40%);
             animation: heroGradientShift 15s ease-in-out infinite;
+            z-index: 3;
+            pointer-events: none;
         }
 
         @keyframes heroGradientShift {
@@ -193,11 +226,37 @@
             66% { transform: scale(0.9) rotate(240deg); }
         }
 
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            z-index: 3;
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+        .particle:nth-child(2) { left: 30%; animation-delay: 5s; animation-duration: 20s; }
+        .particle:nth-child(3) { left: 50%; animation-delay: 10s; animation-duration: 30s; }
+        .particle:nth-child(4) { left: 70%; animation-delay: 15s; animation-duration: 22s; }
+        .particle:nth-child(5) { left: 90%; animation-delay: 20s; animation-duration: 28s; }
+
+        @keyframes float {
+            from {
+                transform: translateY(100vh) translateX(0);
+            }
+            to {
+                transform: translateY(-100px) translateX(100px);
+            }
+        }
+
         .hero__content {
             max-width: 800px;
             text-align: center;
             padding: 2rem;
-            z-index: 1;
+            z-index: 4;
             position: relative;
         }
 
@@ -480,28 +539,14 @@
             75% { transform: scale(1.05) rotate(270deg); }
         }
 
-        .particle {
+        .brands-enhanced .particle,
+        .tools-enhanced .particle {
             position: absolute;
             width: 2px;
             height: 2px;
             background: rgba(0, 0, 0, 0.2);
             border-radius: 50%;
             animation: float 20s infinite linear;
-        }
-
-        .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
-        .particle:nth-child(2) { left: 30%; animation-delay: 5s; animation-duration: 20s; }
-        .particle:nth-child(3) { left: 50%; animation-delay: 10s; animation-duration: 30s; }
-        .particle:nth-child(4) { left: 70%; animation-delay: 15s; animation-duration: 22s; }
-        .particle:nth-child(5) { left: 90%; animation-delay: 20s; animation-duration: 28s; }
-
-        @keyframes float {
-            from {
-                transform: translateY(100vh) translateX(0);
-            }
-            to {
-                transform: translateY(-100px) translateX(100px);
-            }
         }
 
         .brands__header {
@@ -1726,8 +1771,19 @@
         </div>
     </nav>
 
-    <!-- Hero - Keeping dark as requested -->
+    <!-- Hero - Updated with background image -->
     <section class="hero">
+        <!-- Floating particles -->
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        
+        <!-- Background image with parallax -->
+        <div class="hero-background" id="heroBackground"></div>
+        <div class="hero-overlay"></div>
+        
         <div class="hero__content">
             <h1 class="hero__title">
                 <span class="hero__title-line">One group.</span>
@@ -2400,6 +2456,26 @@
     </footer>
 
     <script>
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            requestAnimationFrame(updateParallax);
+        });
+        
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const parallax = document.getElementById('heroBackground');
+            const hero = document.querySelector('.hero');
+            
+            if (parallax && hero) {
+                const heroBottom = hero.offsetTop + hero.offsetHeight;
+                if (scrolled < heroBottom) {
+                    const speed = 0.3;
+                    const yPos = scrolled * speed;
+                    parallax.style.transform = `translateY(${yPos}px)`;
+                }
+            }
+        }
+
         // Navigation scroll effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('nav');
