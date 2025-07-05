@@ -2,6 +2,23 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Recent Changes (2025-01-05)
+
+### CSS Extraction
+Successfully extracted CSS from embedded styles to external stylesheet for improved maintainability:
+- Created `styles.css` with 1,734 lines of extracted CSS
+- Updated `index.html` to reference external stylesheet
+- Maintained all original functionality and styling
+- Improved file organization following web development best practices
+
+### GSAP Integration
+Added GSAP (GreenSock Animation Platform) with full plugin suite:
+- Installed GSAP via npm with all professional plugins
+- Set up Vite build system for ES module support
+- Created `src/main.js` with comprehensive GSAP configuration
+- Enhanced animations: parallax effects, scroll-triggered animations, smooth scrolling
+- Replaced vanilla JavaScript with GSAP-powered alternatives for better performance
+
 ## Repository Overview
 
 This is the Mach Five Group corporate website (m5tg.com) - a single-page application built with vanilla HTML, CSS, and JavaScript. The website uses an external stylesheet for clean separation of concerns.
@@ -9,8 +26,11 @@ This is the Mach Five Group corporate website (m5tg.com) - a single-page applica
 ## Architecture
 
 ### File Structure
-- **index.html**: Main HTML file with embedded JavaScript
+- **index.html**: Main HTML file with module script reference
 - **styles.css**: External stylesheet containing all CSS styles
+- **src/main.js**: GSAP-powered JavaScript module with all animations
+- **package.json**: NPM configuration with GSAP dependencies
+- **vite.config.js**: Vite bundler configuration for development and build
 - **img/**: Image assets directory
 - **Root assets**: Favicon suite, logos, and hero images
 - **CNAME**: GitHub Pages deployment configuration
@@ -33,15 +53,18 @@ This is the Mach Five Group corporate website (m5tg.com) - a single-page applica
 - **Animation System**: Extensive keyframe animations and transitions
 
 ### JavaScript Architecture
-- **Inline JavaScript**: All functionality in document-end `<script>` tag
-- **Vanilla JS**: No external frameworks or libraries
-- **Event-driven**: Scroll, click, and intersection observers
-- **Performance Optimized**: requestAnimationFrame for smooth animations
+- **ES Modules**: Modern module system with GSAP imports
+- **GSAP Framework**: Professional animation library with full plugin suite
+- **Event-driven**: Enhanced with GSAP's ScrollTrigger and Observer plugins
+- **Performance Optimized**: GSAP's optimized rendering and animation pipeline
 
 ## Development Workflow
 
-### No Build Process
-This is a static site with no build tools, preprocessors, or bundlers. Direct file editing is the development method.
+### Build Process with Vite
+- **Development**: `npm run dev` - Starts Vite development server with hot reload
+- **Production Build**: `npm run build` - Creates optimized build in `dist/` directory
+- **Preview**: `npm run preview` - Preview production build locally
+- **File Editing**: Direct editing with automatic rebuild during development
 
 ### Deployment
 - **GitHub Pages**: Deployed from `gh-pages` branch
@@ -104,3 +127,6 @@ The `index.html` file is approximately 25,000+ tokens. When reading the file pro
 - Use offset/limit parameters for large file reads
 - Use grep/search tools for specific content location
 - Consider the file's single-page architecture when making structural changes
+
+## Memories to Memorize
+- To memorize
