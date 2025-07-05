@@ -4,12 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Overview
 
-This is the Mach Five Group corporate website (m5tg.com) - a single-page application built with vanilla HTML, CSS, and JavaScript. The entire website is contained in one `index.html` file with embedded styles and scripts.
+This is the Mach Five Group corporate website (m5tg.com) - a single-page application built with vanilla HTML, CSS, and JavaScript. The website uses an external stylesheet for clean separation of concerns.
 
 ## Architecture
 
-### Single File Structure
-- **index.html**: Complete website with embedded CSS and JavaScript
+### File Structure
+- **index.html**: Main HTML file with embedded JavaScript
+- **styles.css**: External stylesheet containing all CSS styles
 - **img/**: Image assets directory
 - **Root assets**: Favicon suite, logos, and hero images
 - **CNAME**: GitHub Pages deployment configuration
@@ -25,7 +26,7 @@ This is the Mach Five Group corporate website (m5tg.com) - a single-page applica
 8. **Contact**: Contact information and footer
 
 ### CSS Organization
-- **Inline CSS**: All styles in document head `<style>` tag
+- **External Stylesheet**: All styles organized in `styles.css` file
 - **CSS Custom Properties**: Organized color system with `--m5-*` variables
 - **BEM-like Naming**: Component-based class naming (e.g., `nav__container`, `hero__content`)
 - **Responsive Design**: Mobile-first with clamp() functions and CSS Grid
@@ -81,7 +82,7 @@ This is a static site with no build tools, preprocessors, or bundlers. Direct fi
 
 ### Style Changes
 - Modify CSS custom properties in `:root` for color scheme changes
-- Update component styles in the embedded `<style>` tag
+- Update component styles in the `styles.css` file
 - Test responsive behavior across viewport sizes
 
 ### Adding New Sections
