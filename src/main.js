@@ -89,7 +89,40 @@ document.addEventListener('DOMContentLoaded', function() {
         navToggle.addEventListener('click', function() {
             navToggle.classList.toggle('nav__toggle--open');
             navMenu.classList.toggle('nav__menu--open');
+            document.body.classList.toggle('menu-open');
         });
+
+        // Close menu when clicking on overlay or menu links
+        document.addEventListener('click', function(e) {
+            if (navMenu.classList.contains('nav__menu--open')) {
+                // Close if clicking outside the menu or on a menu link
+                if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                    navToggle.classList.remove('nav__toggle--open');
+                    navMenu.classList.remove('nav__menu--open');
+                    document.body.classList.remove('menu-open');
+                }
+                // Close if clicking on a menu link
+                if (e.target.classList.contains('nav__link')) {
+                    navToggle.classList.remove('nav__toggle--open');
+                    navMenu.classList.remove('nav__menu--open');
+                    document.body.classList.remove('menu-open');
+                }
+            }
+        });
+
+        // Prevent body scroll when menu is open
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    if (document.body.classList.contains('menu-open')) {
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        document.body.style.overflow = '';
+                    }
+                }
+            });
+        });
+        observer.observe(document.body, { attributes: true });
     }
 
     // Navbar scroll effect

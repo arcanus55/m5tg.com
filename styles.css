@@ -505,6 +505,15 @@ neodigm-widget *::-moz-selection {
     z-index: 2;
 }
 
+/* Fix mobile overflow for full-width sections */
+@media (max-width: 768px) {
+    .about-section--dark {
+        margin: 0;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
 .about-section--dark::before {
     content: '';
     position: absolute;
@@ -749,7 +758,7 @@ neodigm-widget *::-moz-selection {
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><g fill="none" stroke="rgba(221,65,36,0.19)" stroke-width="2"><path d="M30 30 L80 50 L120 30 L150 60 L180 40"/><circle cx="30" cy="30" r="3" fill="rgba(221,65,36,0.15)"/><circle cx="80" cy="50" r="3" fill="rgba(221,65,36,0.15)"/><circle cx="120" cy="30" r="3" fill="rgba(221,65,36,0.15)"/><circle cx="150" cy="60" r="3" fill="rgba(221,65,36,0.15)"/><circle cx="180" cy="40" r="3" fill="rgba(221,65,36,0.15)"/><text x="100" y="20" font-family="monospace" font-size="6" fill="rgba(221,65,36,0.17)" text-anchor="middle">PERF</text></g></svg>'),
         
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><g fill="none" stroke="rgba(37,99,235,0.22)" stroke-width="2"><line x1="40" y1="350" x2="160" y2="350"/><circle cx="60" cy="350" r="5" fill="rgba(37,99,235,0.15)"/><text x="60" y="340" font-family="monospace" font-size="6" fill="rgba(37,99,235,0.18)" text-anchor="middle">PLAN</text><circle cx="100" cy="350" r="5" fill="rgba(37,99,235,0.15)"/><text x="100" y="340" font-family="monospace" font-size="6" fill="rgba(37,99,235,0.18)" text-anchor="middle">DO</text><circle cx="140" cy="350" r="5" fill="rgba(37,99,235,0.15)"/><text x="140" y="340" font-family="monospace" font-size="6" fill="rgba(37,99,235,0.18)" text-anchor="middle">CHECK</text></g></svg>');
-    background-size: 450px 450px, 430px 430px, 420px 420px, 440px 440px, 410px 410px, 460px 460px, 390px 390px, 380px 380px, 400px 400px, 370px 370px, 425px 425px;
+    background-size: 700px 700px, 680px 680px, 660px 660px, 720px 720px, 640px 640px, 740px 740px, 620px 620px, 600px 600px, 690px 690px, 580px 580px, 710px 710px;
     background-position: 10% 20%, 75% 25%, 20% 75%, 70% 75%, 85% 80%, 75% 90%, 90% 85%, 80% 95%, 65% 85%, 95% 75%, 85% 95%;
 }
 
@@ -778,7 +787,7 @@ neodigm-widget *::-moz-selection {
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><g fill="none" stroke="rgba(37,99,235,0.20)" stroke-width="2"><rect x="50" y="50" width="80" height="60" rx="4"/><text x="90" y="85" font-family="monospace" font-size="9" fill="rgba(37,99,235,0.18)" text-anchor="middle">GOALS</text><path d="M90 110 L90 140"/><polyline points="85,135 90,140 95,135"/><rect x="50" y="140" width="80" height="60" rx="4"/><text x="90" y="175" font-family="monospace" font-size="9" fill="rgba(37,99,235,0.18)" text-anchor="middle">ACTION</text></g></svg>'),
         
         url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><g fill="none" stroke="rgba(221,65,36,0.24)" stroke-width="3"><circle cx="30" cy="100" r="15"/><text x="30" y="105" font-family="monospace" font-size="8" fill="rgba(221,65,36,0.20)" text-anchor="middle">WIN</text><path d="M45 100 L70 100"/><circle cx="85" cy="100" r="15"/><text x="85" y="105" font-family="monospace" font-size="8" fill="rgba(221,65,36,0.20)" text-anchor="middle">$$$</text><path d="M100 100 L125 100"/><circle cx="140" cy="100" r="15"/><text x="140" y="105" font-family="monospace" font-size="8" fill="rgba(221,65,36,0.20)" text-anchor="middle">EXIT</text></g></svg>');
-    background-size: 440px 440px, 460px 460px, 420px 420px, 430px 430px, 410px 410px, 450px 450px, 380px 380px, 470px 470px, 390px 390px, 400px 400px, 425px 425px, 415px 415px;
+    background-size: 650px 650px, 670px 670px, 630px 630px, 660px 660px, 620px 620px, 680px 680px, 600px 600px, 690px 690px, 610px 610px, 640px 640px, 655px 655px, 625px 625px;
     background-position: 15% 30%, 80% 15%, 25% 80%, 75% 75%, 85% 85%, 90% 75%, 70% 90%, 80% 95%, 65% 80%, 95% 90%, 75% 95%, 85% 80%;
 }
 
@@ -1729,8 +1738,8 @@ neodigm-widget *::-moz-selection {
 }
 
 .tool-card-enhanced:nth-child(2) {
-    --tool-color: #23394e;
-    --status-color: #2A7A4F;
+    --tool-color: #dc3545;
+    --status-color: #dc3545;
 }
 
 .tool-header {
@@ -2562,28 +2571,67 @@ neodigm-widget *::-moz-selection {
 
 /* Mobile menu responsive styles */
 @media (max-width: 768px) {
+    /* Fix potential overflow issues */
+    html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+    }
+    
+    .nav__container {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
     .nav__menu {
         position: fixed;
         top: 0;
         right: -100%;
-        width: 100%;
+        width: 80%;
+        max-width: 300px;
         height: 100vh;
-        background: var(--m5-white);
+        background: var(--dark-bg-primary);
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
-        gap: 2rem;
+        gap: 1.5rem;
+        padding: 6rem 2rem 2rem;
         transition: right 0.3s ease;
-        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+        box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+        overflow-y: auto;
     }
 
     .nav__menu--open {
         right: 0;
     }
 
+    .nav__menu li {
+        width: 100%;
+    }
+
+    .nav__link {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        color: var(--dark-text-primary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1rem;
+    }
+
+    .nav__link:hover {
+        background: rgba(221, 65, 36, 0.1);
+        color: var(--accent-orange);
+    }
+
     .nav__toggle {
         display: block;
         z-index: 1001;
+        position: relative;
+    }
+
+    .nav__toggle span {
+        background: var(--dark-text-primary);
     }
 
     .nav__toggle--open span:nth-child(1) {
@@ -2596,6 +2644,18 @@ neodigm-widget *::-moz-selection {
 
     .nav__toggle--open span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -6px);
+    }
+    
+    /* Add overlay for mobile menu */
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
     }
 
     .about-section__grid {
@@ -2688,6 +2748,14 @@ neodigm-widget *::-moz-selection {
         padding: 40px 15px;
         min-height: 70vh;
         text-align: center;
+        max-width: 100vw;
+        overflow: hidden;
+    }
+    
+    .machvive-hero::after {
+        width: 100%;
+        height: 100%;
+        transform: translate(-50%, -50%);
     }
 
     .machvive-title {
@@ -2726,6 +2794,13 @@ neodigm-widget *::-moz-selection {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0 1rem;
+    }
+    
+    .masonry-grid {
+        padding: 2rem 1rem;
+        gap: 2rem;
+        /* Allow markers to overflow on mobile */
+        overflow: visible;
     }
 
     .masonry-item {
@@ -3028,11 +3103,11 @@ neodigm-widget *::-moz-selection {
 .ripped-tape {
     position: relative;
     display: inline-block;
-    padding: 8px 25px 8px 20px;
-    font-size: 16px !important;
+    padding: 6px 20px 6px 16px;
+    font-size: 13px !important;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.8px;
     font-family: 'Inter', sans-serif;
     color: rgba(255, 255, 255, 0.9);
     margin: 0;
@@ -3073,13 +3148,13 @@ neodigm-widget *::-moz-selection {
 .ripped-tape::after {
     content: '';
     position: absolute;
-    right: -8px;
+    right: -6px;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
     border-style: solid;
-    border-width: 12px 0 12px 8px;
+    border-width: 10px 0 10px 6px;
     border-color: transparent transparent transparent #C63C28;
     filter: drop-shadow(2px 0 2px rgba(0, 0, 0, 0.2));
 }
@@ -3134,6 +3209,95 @@ neodigm-widget *::-moz-selection {
     border-color: transparent transparent transparent #1a2b3a;
 }
 
+/* Tool Card Title Wrapper */
+.tool-card__title-wrapper {
+    position: relative;
+    margin-bottom: 1rem;
+    transform: rotate(-1deg);
+}
+
+.tool-card__title {
+    font-size: 16px !important;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* MachVive white and black tape */
+.machvive-tape {
+    /* Heavy wear pattern with white/black colors */
+    background: 
+        /* Scratches */
+        linear-gradient(95deg, transparent 15%, rgba(0,0,0,0.12) 16%, transparent 18%),
+        linear-gradient(-25deg, transparent 35%, rgba(0,0,0,0.1) 36%, transparent 37%),
+        /* Scuff marks */
+        radial-gradient(ellipse at 20% 20%, rgba(0,0,0,0.15) 0%, transparent 25%),
+        radial-gradient(ellipse at 60% 70%, rgba(0,0,0,0.12) 0%, transparent 20%),
+        radial-gradient(ellipse at 80% 30%, rgba(0,0,0,0.08) 0%, transparent 15%),
+        radial-gradient(ellipse at 40% 50%, rgba(0,0,0,0.06) 0%, transparent 18%),
+        /* Base white color */
+        radial-gradient(ellipse at center, #ffffff 0%, #f5f5f5 100%);
+    
+    color: #1a1a1a !important;
+    
+    box-shadow: 
+        0 2px 5px rgba(0, 0, 0, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* White tape left edge gradient */
+.machvive-tape::before {
+    background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, transparent 100%);
+}
+
+/* White tape arrow end */
+.machvive-tape::after {
+    border-color: transparent transparent transparent #e5e5e5;
+}
+
+/* Web Tool Toys red and white tape */
+.webtoys-tape {
+    /* Heavy wear pattern with red/white colors */
+    background: 
+        /* Scratches */
+        linear-gradient(95deg, transparent 15%, rgba(255,255,255,0.25) 16%, transparent 18%),
+        linear-gradient(-25deg, transparent 35%, rgba(255,255,255,0.2) 36%, transparent 37%),
+        /* Scuff marks */
+        radial-gradient(ellipse at 20% 20%, rgba(255,255,255,0.3) 0%, transparent 25%),
+        radial-gradient(ellipse at 60% 70%, rgba(255,255,255,0.25) 0%, transparent 20%),
+        radial-gradient(ellipse at 80% 30%, rgba(255,255,255,0.15) 0%, transparent 15%),
+        radial-gradient(ellipse at 40% 50%, rgba(255,255,255,0.1) 0%, transparent 18%),
+        /* Base red color */
+        radial-gradient(ellipse at center, #dc3545 0%, #c82333 100%);
+    
+    color: rgba(255, 255, 255, 0.95) !important;
+    
+    box-shadow: 
+        0 2px 5px rgba(0, 0, 0, 0.3),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Red tape left edge gradient */
+.webtoys-tape::before {
+    background: linear-gradient(90deg, rgba(0,0,0,0.15) 0%, transparent 100%);
+}
+
+/* Red tape arrow end */
+.webtoys-tape::after {
+    border-color: transparent transparent transparent #c82333;
+}
+
+/* Tool card rotation variety */
+.tool-card-enhanced:nth-child(1) .tool-card__title-wrapper {
+    transform: rotate(-2deg);
+}
+
+.tool-card-enhanced:nth-child(2) .tool-card__title-wrapper {
+    transform: rotate(1deg);
+}
+
 /* Hover effects */
 .brand-card-enhanced:hover .ripped-tape {
     transform: scale(1.02);
@@ -3143,20 +3307,44 @@ neodigm-widget *::-moz-selection {
         inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }
 
+/* Hover effects for tool cards */
+.tool-card-enhanced:hover .ripped-tape {
+    transform: scale(1.02);
+}
+
+.tool-card-enhanced:hover .machvive-tape {
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.tool-card-enhanced:hover .webtoys-tape {
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.4),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
 /* Mobile adjustments for ripped tape */
 @media (max-width: 768px) {
     .ripped-tape {
-        font-size: 14px !important;
-        padding: 6px 20px 6px 16px;
+        font-size: 11px !important;
+        padding: 5px 16px 5px 12px;
         letter-spacing: 0.5px;
     }
     
     .ripped-tape::after {
-        border-width: 10px 0 10px 6px;
-        right: -6px;
+        border-width: 8px 0 8px 5px;
+        right: -5px;
     }
     
-    .brand-card__title-wrapper {
+    .brand-card__title-wrapper,
+    .tool-card__title-wrapper {
         margin-bottom: 0.75rem;
+    }
+    
+    .tool-card__title {
+        font-size: 14px !important;
     }
 }
