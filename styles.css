@@ -3163,7 +3163,6 @@ neodigm-widget *::-moz-selection {
         width: 80% !important;
         max-width: 200px;
     }
-}
 
 /* Extra small screens */
 @media (max-width: 480px) {
