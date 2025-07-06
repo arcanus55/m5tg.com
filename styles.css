@@ -2826,24 +2826,17 @@ neodigm-widget *::-moz-selection {
     .about-section__text {
         font-size: 1rem;
         line-height: 1.7;
-        text-align: center;
-        max-width: 90%;
-        margin: 0 auto;
     }
     
     .about-section__content h3 {
         font-size: clamp(1.8rem, 5vw, 2.2rem);
         font-weight: 400;
         margin-bottom: 1rem;
-        text-align: center;
     }
     
     .about-section__content p {
         font-size: 1rem;
         line-height: 1.7;
-        text-align: center;
-        max-width: 90%;
-        margin: 0 auto;
     }
 
     /* Masonry Items */
@@ -2906,13 +2899,9 @@ neodigm-widget *::-moz-selection {
     .tool-card__description {
         font-size: 0.9rem;
         line-height: 1.6;
-        text-align: center;
         margin: 1rem 0;
     }
 
-    /* Remove duplicate rule - already defined above */
-        text-align: center;
-    }
 
     .brands__subtitle,
     .tools__subtitle {
@@ -3061,12 +3050,10 @@ neodigm-widget *::-moz-selection {
     .philosophy__title {
         font-size: clamp(1.8rem, 5vw, 2.2rem);
         margin-bottom: 1.5rem;
-        text-align: center;
         position: relative;
         z-index: 15;
         font-weight: 400;
         line-height: 1.4;
-        color: var(--dark-text-primary);
     }
 
     .philosophy__text {
@@ -3075,10 +3062,6 @@ neodigm-widget *::-moz-selection {
         margin-bottom: 1.5rem;
         position: relative;
         z-index: 15;
-        text-align: center;
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
     }
 
     /* Contact Section */
@@ -3089,22 +3072,17 @@ neodigm-widget *::-moz-selection {
     .contact__title {
         font-size: clamp(1.8rem, 5vw, 2.2rem);
         font-weight: 400;
-        text-align: center;
         margin-bottom: 1rem;
     }
     
     .contact__text {
         font-size: 1rem;
         line-height: 1.7;
-        text-align: center;
-        max-width: 90%;
         margin: 0 auto 1.5rem auto;
     }
     
     .contact__email {
         font-size: 1.1rem;
-        text-align: center;
-        display: block;
         margin: 1rem auto;
     }
 
@@ -3164,61 +3142,6 @@ neodigm-widget *::-moz-selection {
         max-width: 200px;
     }
 
-/* Desktop fixes - restore desktop layout that mobile overrode */
-@media (min-width: 901px) {
-    .philosophy__title {
-        text-align: left !important;
-        font-weight: 600 !important;
-    }
-    
-    .philosophy__text {
-        text-align: left !important;
-        max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    
-    .about-section__content h3 {
-        text-align: left !important;
-    }
-    
-    .about-section__content p {
-        text-align: left !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-    }
-    
-    .contact__title {
-        text-align: left !important;
-    }
-    
-    .contact__text {
-        text-align: left !important;
-        max-width: 100% !important;
-        margin: 0 auto 1.5rem 0 !important;
-    }
-    
-    .contact__email {
-        text-align: left !important;
-        display: inline !important;
-        margin: 1rem 0 !important;
-    }
-    
-    .brands__title,
-    .tools__title {
-        text-align: left !important;
-    }
-    
-    .brands__subtitle,
-    .tools__subtitle {
-        text-align: left !important;
-    }
-    
-    .brand-card__description,
-    .tool-card__description {
-        text-align: left !important;
-    }
-}
 
 /* Extra small screens */
 @media (max-width: 480px) {
