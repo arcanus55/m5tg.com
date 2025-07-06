@@ -3050,12 +3050,12 @@ neodigm-widget *::-moz-selection {
         z-index: 10;
     }
     
-    /* Make whiteboard subtle in philosophy */
+    /* Make whiteboard suitable for mobile in philosophy */
     .philosophy::before {
-        opacity: 0.15 !important;
-        background-size: contain !important;
-        background-position: center center !important;
-        background-attachment: scroll !important;
+        opacity: 0.15;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: scroll;
     }
 
     .philosophy__title {
@@ -3163,6 +3163,62 @@ neodigm-widget *::-moz-selection {
         width: 80% !important;
         max-width: 200px;
     }
+
+/* Desktop fixes - restore desktop layout that mobile overrode */
+@media (min-width: 901px) {
+    .philosophy__title {
+        text-align: left !important;
+        font-weight: 600 !important;
+    }
+    
+    .philosophy__text {
+        text-align: left !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+    
+    .about-section__content h3 {
+        text-align: left !important;
+    }
+    
+    .about-section__content p {
+        text-align: left !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .contact__title {
+        text-align: left !important;
+    }
+    
+    .contact__text {
+        text-align: left !important;
+        max-width: 100% !important;
+        margin: 0 auto 1.5rem 0 !important;
+    }
+    
+    .contact__email {
+        text-align: left !important;
+        display: inline !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .brands__title,
+    .tools__title {
+        text-align: left !important;
+    }
+    
+    .brands__subtitle,
+    .tools__subtitle {
+        text-align: left !important;
+    }
+    
+    .brand-card__description,
+    .tool-card__description {
+        text-align: left !important;
+    }
+}
 
 /* Extra small screens */
 @media (max-width: 480px) {
