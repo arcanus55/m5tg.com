@@ -507,7 +507,7 @@ neodigm-widget *::-moz-selection {
 }
 
 /* Fix mobile overflow for full-width sections */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .about-section--dark {
         margin: 0;
         padding-left: 2rem;
@@ -1218,7 +1218,7 @@ neodigm-widget *::-moz-selection {
     z-index: 2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .brands__grid {
         grid-template-columns: 1fr;
     }
@@ -1675,7 +1675,7 @@ neodigm-widget *::-moz-selection {
     z-index: 2;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .tools__grid {
         grid-template-columns: 1fr;
     }
@@ -2591,7 +2591,7 @@ neodigm-widget *::-moz-selection {
 }
 
 /* Mobile menu responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     /* Fix potential overflow issues */
     html, body {
         overflow-x: hidden;
@@ -2753,10 +2753,11 @@ neodigm-widget *::-moz-selection {
 }
 
 /* Comprehensive Mobile Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     /* Base adjustments */
     body {
         font-size: 14px;
+        border: 5px solid red !important;
     }
 
     .container {
@@ -2912,20 +2913,24 @@ neodigm-widget *::-moz-selection {
 
     /* Tool Icon Adjustments */
     .tool-icon:has(img) {
-        width: 80vw;
-        height: 30vw;
+        width: 80vw !important;
+        height: 30vw !important;
         max-width: 800px;
         max-height: 300px;
         margin-bottom: 1rem;
+        border: 10px solid lime !important;
+        background: yellow !important;
     }
     
     /* Brand Icon Adjustments */
     .brand-icon:has(img) {
-        width: 80vw;
-        height: 30vw;
+        width: 80vw !important;
+        height: 30vw !important;
         max-width: 800px;
         max-height: 300px;
         margin-bottom: 1rem;
+        border: 10px solid lime !important;
+        background: yellow !important;
     }
 
     .tool-logo-text {
@@ -3383,7 +3388,7 @@ neodigm-widget *::-moz-selection {
 }
 
 /* Mobile adjustments for ripped tape */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .ripped-tape {
         font-size: 11px !important;
         padding: 5px 16px 5px 12px;
