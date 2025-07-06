@@ -1,0 +1,956 @@
+/* ==========================================================================
+   Homepage Specific Styles
+   ========================================================================== */
+
+/* Hero section */
+.machvive-hero {
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* Grid background pattern */
+.machvive-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Spotlight effect */
+.machvive-hero::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px;
+    height: 500px;
+    background: radial-gradient(ellipse at center, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.10) 20%,
+        rgba(255, 255, 255, 0.06) 35%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 75%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.machvive-hero-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+.machvive-hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.machvive-logo-section {
+    flex: 0 1 auto;
+    text-align: center;
+}
+
+.machvive-logo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+.machvive-tagline {
+    color: #888;
+    font-size: 24px;
+    font-weight: 300;
+    margin: 40px auto 0;
+    line-height: 1.6;
+    max-width: 1000px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Animated underline for "open source" */
+.open-source-highlight {
+    position: relative;
+    display: inline-block;
+    color: #888;
+}
+
+.open-source-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #DD4124;
+    transition: width 0.8s ease-out;
+    animation: underlineExpand 1s ease-out 0.5s forwards;
+}
+
+@keyframes underlineExpand {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* NPM section */
+.machvive-npm-section {
+    flex: 0 0 400px;
+    text-align: center;
+}
+
+.machvive-features-text {
+    color: #fafafa;
+    font-size: 16px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.machvive-features-text .dot {
+    color: #444;
+}
+
+/* Animated feature text items */
+.feature-text-item {
+    opacity: 0;
+    transform: translateY(-15px);
+    animation: textStagger 0.6s ease-out forwards;
+}
+
+.feature-text-item[data-delay="0.1"] {
+    animation-delay: 0.1s;
+}
+
+.feature-text-item[data-delay="0.3"] {
+    animation-delay: 0.3s;
+}
+
+.feature-text-item[data-delay="0.5"] {
+    animation-delay: 0.5s;
+}
+
+@keyframes textStagger {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.npm-install-box {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 16px 20px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    margin-bottom: 30px;
+    overflow: visible;
+}
+
+.copy-notification {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #DD4124;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Roboto', sans-serif;
+    white-space: nowrap;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateX(-50%) translateY(5px); }
+    20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+    100% { opacity: 0; transform: translateX(-50%) translateY(5px); }
+}
+
+.npm-prefix {
+    color: #888;
+}
+
+.npm-command {
+    color: #DD4124;
+}
+
+.npm-package {
+    color: #4fc3f7;
+}
+
+.copy-btn {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.copy-btn:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.machvive-get-started {
+    margin-top: 20px;
+    color: white;
+}
+
+/* Features section */
+.machvive-features {
+    padding: 40px 20px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 2px solid #DD4124;
+    position: relative;
+}
+
+/* Grid background pattern for features section */
+.machvive-features::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 15%, black 85%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Additional bottom row spotlights */
+.features-grid:has(.feature-card:nth-child(5)) {
+    position: relative;
+}
+
+.features-grid:has(.feature-card:nth-child(5))::after {
+    content: '';
+    position: absolute;
+    top: 300px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at center, 
+        rgba(255, 255, 255, 0.06) 0%, 
+        rgba(255, 255, 255, 0.03) 40%,
+        transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.feature-card {
+    position: relative;
+    z-index: 1;
+    background: 
+        linear-gradient(135deg, 
+            rgba(255, 255, 255, 0.05) 0%, 
+            rgba(255, 255, 255, 0.02) 25%, 
+            rgba(0, 0, 0, 0.1) 50%, 
+            rgba(255, 255, 255, 0.02) 75%, 
+            rgba(255, 255, 255, 0.05) 100%
+        ),
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+        linear-gradient(45deg, #2a2a2a 25%, transparent 25%), 
+        linear-gradient(-45deg, #2a2a2a 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #2a2a2a 75%), 
+        linear-gradient(-45deg, transparent 75%, #2a2a2a 75%);
+    background-size: 
+        100% 100%,
+        200px 200px,
+        150px 150px,
+        4px 4px, 
+        4px 4px, 
+        4px 4px, 
+        4px 4px;
+    background-position: 
+        0 0,
+        -100px -100px,
+        50px 50px,
+        0 0, 
+        0 2px, 
+        2px -2px, 
+        -2px 0px;
+    background-color: #2a2a2a;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+        0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    animation: cardStagger 0.8s ease-out forwards;
+    transition: all 0.3s ease;
+}
+
+/* Hover pulse effect - only on devices that support hover */
+@media (hover: hover) {
+    .feature-card:hover {
+        animation: cardStagger 0.8s ease-out forwards, pulse 2s ease-in-out infinite;
+        border-color: rgba(221, 65, 36, 0.3);
+        box-shadow: 
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -1px 0 rgba(0, 0, 0, 0.3),
+            0 4px 8px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(221, 65, 36, 0.1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+/* Staggered animation for each card */
+.feature-card:nth-child(1) {
+    transform: translateX(-50px) translateY(20px);
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(2) {
+    transform: translateX(0) translateY(-30px);
+    animation-delay: 0.4s;
+}
+
+.feature-card:nth-child(3) {
+    transform: translateX(50px) translateY(20px);
+    animation-delay: 0.6s;
+}
+
+.feature-card:nth-child(4) {
+    transform: translateX(-40px) translateY(-20px);
+    animation-delay: 0.8s;
+}
+
+.feature-card:nth-child(5) {
+    transform: translateX(0) translateY(30px);
+    animation-delay: 1.0s;
+}
+
+.feature-card:nth-child(6) {
+    transform: translateX(40px) translateY(-20px);
+    animation-delay: 1.2s;
+}
+
+@keyframes cardStagger {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) translateY(0);
+    }
+}
+
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.01) 2px,
+            rgba(255, 255, 255, 0.01) 4px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.02) 2px,
+            rgba(0, 0, 0, 0.02) 4px
+        );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Subtle spotlight effect with natural falloff */
+.machvive-features::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, 
+        rgba(255, 255, 255, 0.15) 0%, 
+        rgba(255, 255, 255, 0.12) 30%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.04) 70%,
+        rgba(255, 255, 255, 0.02) 85%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+.feature-card > * {
+    position: relative;
+    z-index: 3;
+}
+
+.feature-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    flex-shrink: 0;
+}
+
+.feature-card h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    transition: all 0.3s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+@media (hover: hover) {
+    .feature-card:hover h3 {
+        background: linear-gradient(135deg, #DD4124 0%, #ff6b4a 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        transform: translateX(5px);
+    }
+}
+
+.feature-card p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Responsive */
+@media only screen and (max-width: 768px) {
+    .machvive-hero {
+        padding: 30px 15px 40px;
+    }
+
+    .machvive-hero-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .machvive-logo {
+        max-width: 280px;
+    }
+
+    .machvive-logo-section {
+        margin-bottom: -10px;
+    }
+
+    .machvive-features-text {
+        font-size: 14px;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
+
+    .npm-install-box {
+        margin-bottom: 20px;
+    }
+
+    .machvive-get-started {
+        margin-top: 25px;
+    }
+    
+    .machvive-npm-section {
+        flex: 1;
+        width: 100%;
+        max-width: 450px;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .machvive-tagline {
+        font-size: 20px;
+        max-width: 90%;
+        line-height: 1.4;
+        margin: 25px auto 0;
+    }
+}
+
+/* Extra small screens */
+@media only screen and (max-width: 480px) {
+    .machvive-hero {
+        padding: 20px 15px 30px;
+    }
+
+    .machvive-hero-content {
+        gap: 15px;
+    }
+
+    .machvive-logo {
+        max-width: 250px;
+    }
+
+    .machvive-logo-section {
+        margin-bottom: -15px;
+    }
+
+    .machvive-features-text {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .npm-install-box {
+        margin-bottom: 15px;
+        padding: 14px 18px;
+        font-size: 14px;
+    }
+
+    .machvive-get-started {
+        margin-top: 25px;
+    }
+
+    .machvive-tagline {
+        font-size: 18px;
+        max-width: 95%;
+        line-height: 1.3;
+        margin: 20px auto 0;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.103.0" />
+    <title>MachVive - Lightweight Framework for Modern Web Applications</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width, height=device-height"/>
+
+
+<link rel="preconnect" href="https://arcanus55.github.io/" crossorigin>
+<link rel="preconnect" href="https://neodigm.github.io/" crossorigin>
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://unpkg.com/">
+
+
+<link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.css">
+<link rel="stylesheet" href="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.css">
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link href="https://www.machvive.com/site.webmanifest" rel="manifest">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+<meta name="author" content="Mach Five Group">
+
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TDNPRQRS');</script>
+
+    
+    
+    <link rel="stylesheet" href="/css/homepage.css">
+
+    <meta property="og:title"       content="MachVive - Lightweight Framework for Modern Web Applications">
+    <meta property="og:site_name"   content="MachVive">
+    <meta property="og:url"         content="https://www.machvive.com/">
+    <meta property="og:description" content="MachVive is a lightweight, high-performance framework for building responsive web applications. Open source and designed to scale without sacrificing simplicity.">
+    <meta property="og:type"        content="website">
+    <meta property="og:image"       content="https://www.machvive.com/img/MachVive_hero.jpg">
+    <meta property="og:logo"        content="https://www.machvive.com/img/MachVive_logo.jpg" />
+    
+    
+    <meta name="description" content="MachVive is a lightweight, high-performance framework for building responsive web applications. Open source and designed to scale without sacrificing simplicity.">
+    <meta name="keywords" content="MachVive, web framework, JavaScript framework, responsive design, open source, lightweight framework">
+    <meta name="author" content="Mach Five Group">
+    
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MachVive - Lightweight Framework for Modern Web Applications">
+    <meta name="twitter:description" content="Build fast, responsive web applications without the complexity. Open source and designed to scale.">
+    <meta name="twitter:image" content="https://www.machvive.com/img/MachVive_hero.jpg">
+    
+    
+    <link rel="canonical" href="https://www.machvive.com/">
+
+    <meta name="apple-mobile-web-app-title" content="MachVive" />
+</head>
+
+<body class="machvive-dark-theme">
+    
+    <div class="machvive-top-stripe">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="margin-right: 8px; vertical-align: middle;">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" fill="white"/>
+        </svg>
+        MachVive is open source and free forever - contribute on GitHub
+    </div>
+    
+    <main>
+        <header class="l-main__header">
+    <nav class="main-nav">
+    <div class="nav-container">
+        
+        <div class="nav-brand">
+            <a href="/" class="brand-link">
+                <img src="/img/MachVive Library.png" alt="MachVive" class="nav-logo">
+            </a>
+        </div>
+        
+        
+        <div class="nav-links desktop-nav">
+            <a href="/about" class="nav-link">About</a>
+            <a href="/docs/" class="nav-link">Documentation</a>
+            <a href="https://github.com/Mach-Five-Group/" target="_blank" class="nav-link github-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+            </a>
+        </div>
+        
+        
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        </button>
+    </div>
+    
+    
+    <div class="mobile-nav-drawer">
+        <div class="mobile-nav-content">
+            <a href="/about" class="mobile-nav-link">About</a>
+            <a href="/docs/" class="mobile-nav-link">Documentation</a>
+            <a href="https://github.com/Mach-Five-Group/" target="_blank" class="mobile-nav-link github-mobile">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                </svg>
+                GitHub
+            </a>
+        </div>
+    </div>
+</nav>
+</header>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "MachVive",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Cross-platform",
+  "description": "A lightweight, high-performance framework for building responsive web applications",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mach Five Group",
+    "url": "https://www.machfivegroup.com"
+  }
+}
+</script>
+
+
+        
+        
+        <section class="machvive-hero">
+            <div class="machvive-hero-wrapper">
+                <div class="machvive-hero-content">
+                    
+                    <div class="machvive-logo-section">
+                        <img src="/img/MachVive Logo.png" alt="MachVive" class="machvive-logo">
+                    </div>
+                    
+                    
+                    <div class="machvive-npm-section">
+                        <div class="machvive-features-text">
+                            <span class="feature-text-item" data-delay="0.1">Responsive</span>
+                            <span class="dot">•</span>
+                            <span class="feature-text-item" data-delay="0.3">Customizable</span>
+                            <span class="dot">•</span>
+                            <span class="feature-text-item" data-delay="0.5">Future-proof</span>
+                        </div>
+                        
+                        <div class="npm-install-box" id="npmInstallBox">
+                            <span class="npm-prefix">$</span>
+                            <span class="npm-command">npm i -S</span>
+                            <span class="npm-package">@machvive/core</span>
+                            <button class="copy-btn" onclick="copyToClipboard()" title="Copy to clipboard">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <a href="/docs/" 
+                        id="js-btn__started"
+                        data-n55-enchanted-cta
+                        data-n55-theme="night"
+                        data-n55-enchanted-cta-size="medium"
+                        data-n55-enchanted-cta-hover-an="true"
+                        data-n55-enchanted-cta-dont-touch="true"
+                        class="machvive-get-started"
+                        >Get Started
+                        </a>
+                    </div>
+                </div>
+                
+                
+                <p class="machvive-tagline">A lightweight, high-performance framework for building responsive&nbsp;web&nbsp;applications.<br><span class="open-source-highlight">Open source</span> and designed to scale without sacrificing simplicity.</p>
+            </div>
+        </section>
+        
+        
+        <section class="machvive-features">
+            <div class="features-grid">
+                
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <img src="/img/Icon-01.png" alt="Difference" class="feature-icon">
+                        <h3>Difference</h3>
+                    </div>
+                    <p>MachVive is different. It's a framework that doesn't get in the way. It's unobtrusive and highly configurable. It's deployed for interactive chat experiences.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <img src="/img/Icon-02.png" alt="Performance" class="feature-icon">
+                        <h3>Performance</h3>
+                    </div>
+                    <p>Built with vanilla JavaScript and CSS, MachVive prioritizes speed. MachVive is fast, responsive, low-code, analytics friendly, modular, and secure. It doesn't break. It's opinionated by design to handle thousands of concurrent business experiences.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <img src="/img/Icon-03.png" alt="Simplicity" class="feature-icon">
+                        <h3>Simplicity</h3>
+                    </div>
+                    <p>MachVive is the anti-framework. Its intuitive developer experience without sacrificing power. Its intuitive developer experience with AI based agility without sacrificing power. Simple &gt; complex.</p>
+                </div>
+                
+                
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <img src="/img/Icon-04.png" alt="Acceleration" class="feature-icon">
+                        <h3>Acceleration</h3>
+                    </div>
+                    <p>Designed for the modern attention economy, MachVive acts as a rheostat of accelerometer aligned digital touchpoints within CIAM.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <img src="/img/Icon-05.png" alt="Declarative" class="feature-icon">
+                        <h3>Declarative</h3>
+                    </div>
+                    <p>Components are declarative and HTML-first, just drop a custom tag into your markup. No JavaScript required (though it’s there if you want it).</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-header">
+                        <img src="/img/Icon-06.png" alt="Plug-in" class="feature-icon">
+                        <h3>Plug-in</h3>
+                    </div>
+                    <p>Getting started is simple: copy the provided snippet into any page you want to elevate. No installations, no build scripts.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="l-main__footer">
+    <div class="footer-content">
+        <div class="footer-grid">
+            
+            <div class="footer-section footer-widget-section">
+                <neodigm-widget 
+                    data-n55-widget-id="effect_two_word_rotate"
+                    data-n55-theme="primary"
+                ></neodigm-widget>
+                <p class="footer-description">
+                    <span data-n55-enchanted-text data-n55-speed="3000">
+                        <span>Built by Mach Five Group, MachVive is a lightweight framework for modern web applications.</span>
+                        <span>Open source and designed to scale.</span>
+                        <span>Built for performance without complexity.</span>
+                    </span>
+                </p>
+                <div class="footer-contact">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="email-icon">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="m22 7-10 5L2 7"/>
+                    </svg>
+                    <a href="mailto:support@machfivetech.com">support@machvive.com</a>
+                </div>
+            </div>
+            
+            
+            <div class="footer-section">
+                <h4 class="footer-heading">Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="/docs/">Documentation</a></li>
+                    <li><a href="/about/">About</a></li>
+                </ul>
+            </div>
+            
+            
+            <div class="footer-section">
+                <h4 class="footer-heading">Mach Five Group</h4>
+                <ul class="footer-links">
+                    <li><a href="https://www.machfivegroup.com" target="_blank">Mach Five Group</a></li>
+                    <li><a href="https://www.machfivemarketing.com" target="_blank">Mach Five Marketing</a></li>
+                    <li><a href="https://www.machfivetech.com" target="_blank">Mach Five Tech</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        <div class="footer-bottom">
+            <p>© 2025 MachVive</p>
+            <p>Proudly built by <a href="https://www.machfivegroup.com" target="_blank">Mach Five Group</a></p>
+        </div>
+    </div>
+</footer>
+    </main>
+    
+
+<script src="https://arcanus55.github.io/neodigm55/dist/neodigm55__v4_0.js"></script>
+<script src="https://arcanus55.github.io/neodigm55/dist/neodigm55_v1_0_launchComplete.js"></script>
+
+
+<script src="/js/main.js"></script>
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TDNPRQRS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+
+
+<script>
+function copyToClipboard() {
+    const text = 'npm i -S @machvive/core';
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        const originalHTML = btn.innerHTML;
+        const npmBox = document.getElementById('npmInstallBox');
+        
+        
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M20 6L9 17L4 12"></path>
+        </svg>`;
+        btn.style.color = '#DD4124';
+        
+        
+        const notification = document.createElement('div');
+        notification.className = 'copy-notification';
+        notification.textContent = 'Copied to clipboard!';
+        npmBox.appendChild(notification);
+        
+        
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+            btn.style.color = '';
+            notification.remove();
+        }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>

@@ -110,6 +110,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', updateNavbar);
 
+    // Scroll Progress Bar
+    const updateScrollProgress = () => {
+        const scrollProgress = document.getElementById('scrollProgress');
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = scrollTop / docHeight;
+        
+        if (scrollProgress) {
+            scrollProgress.style.transform = `scaleX(${scrollPercent})`;
+        }
+    };
+
+    window.addEventListener('scroll', updateScrollProgress);
+
     // Enhanced Multi-Layer Parallax System
     const heroBackground = document.querySelector('.hero-background');
     const heroOverlay = document.querySelector('.hero-overlay');
@@ -154,188 +168,306 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Enhanced Interconnected Nodes System
-    console.log('Found particles:', particles.length);
-    if (particles.length > 0) {
-        // Create SVG canvas for connection lines
-        const heroSection = document.querySelector('.hero');
-        const svgCanvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svgCanvas.style.position = 'absolute';
-        svgCanvas.style.top = '0';
-        svgCanvas.style.left = '0';
-        svgCanvas.style.width = '100%';
-        svgCanvas.style.height = '100%';
-        svgCanvas.style.zIndex = '4';
-        svgCanvas.style.pointerEvents = 'none';
-        heroSection.appendChild(svgCanvas);
-
-        // Store particle data
-        const particleData = [];
-
-        // Initialize particles
-        particles.forEach((particle, index) => {
-            const heroRect = heroSection.getBoundingClientRect();
+    // Create gears for MachVive hero section
+    const machviveHero = document.querySelector('.machvive-hero');
+    if (machviveHero) {
+        const machviveRect = machviveHero.getBoundingClientRect();
+        const machviveHubX = machviveRect.width / 2;
+        const machviveHubY = machviveRect.height / 2;
+        
+        // Create 6 gears for MachVive hero
+        for (let i = 0; i < 6; i++) {
+            const gear = document.createElement('div');
             
-            let x, y;
+            let x, y, size;
             
-            // Create more spaced out distribution with wider gaps
-            const cols = Math.ceil(Math.sqrt(particles.length * 2)); // More horizontal spread
-            const rows = Math.ceil(particles.length / cols);
+            // Position gears around the content
+            if (i < 3) {
+                // Orbital gears
+                const angle = (i / 3) * 2 * Math.PI;
+                const radius = 200;
+                x = machviveHubX + Math.cos(angle) * radius;
+                y = machviveHubY + Math.sin(angle) * radius;
+                size = 100;
+            } else {
+                // Floating gears
+                const positions = [
+                    { x: machviveHubX - 400, y: machviveHubY - 150 },
+                    { x: machviveHubX + 400, y: machviveHubY + 150 },
+                    { x: machviveHubX, y: machviveHubY - 300 }
+                ];
+                const pos = positions[i - 3];
+                x = pos.x;
+                y = pos.y;
+                size = 80;
+            }
             
-            const col = index % cols;
-            const row = Math.floor(index / cols);
+            // Use the same gear creation code from the original hero
+            gear.style.cssText = `
+                position: absolute;
+                left: 0px;
+                top: 0px;
+                width: ${size}px;
+                height: ${size}px;
+                z-index: 15;
+            `;
             
-            // Create wider grid spacing with padding from edges
-            const paddingX = heroRect.width * 0.1; // 10% padding from edges
-            const paddingY = heroRect.height * 0.1;
-            const usableWidth = heroRect.width - (paddingX * 2);
-            const usableHeight = heroRect.height - (paddingY * 2);
+            // Create the same SVG gear
+            const teethCount = Math.floor(size / 6);
+            const innerRadius = size * 0.25;
+            const outerRadius = size * 0.40;
+            const toothRadius = size * 0.48;
+            const toothWidth = 0.4;
             
-            const baseX = paddingX + (col / (cols - 1)) * usableWidth;
-            const baseY = paddingY + (row / (rows - 1)) * usableHeight;
-            
-            // Larger random offset for more natural spacing
-            const randomOffsetX = (Math.random() - 0.5) * (usableWidth / cols * 1.2);
-            const randomOffsetY = (Math.random() - 0.5) * (usableHeight / rows * 1.2);
-            
-            x = Math.max(paddingX, Math.min(heroRect.width - paddingX, baseX + randomOffsetX));
-            y = Math.max(paddingY, Math.min(heroRect.height - paddingY, baseY + randomOffsetY));
-            
-            // Debug logging for positioning
-            console.log(`Particle ${index}: x=${x}, y=${y}, heroWidth=${heroRect.width}`);
-            
-            gsap.set(particle, {
-                x: x,
-                y: y,
-                scale: Math.random() * 0.5 + 0.7,
-                opacity: Math.random() * 0.4 + 0.6,
-                visibility: 'visible',
-                position: 'absolute',
-                left: 0,
-                top: 0
-            });
-
-            // Store particle data for connections
-            particleData.push({
-                element: particle,
-                x: x,
-                y: y,
-                vx: (Math.random() - 0.5) * 2,
-                vy: (Math.random() - 0.5) * 2,
-                connections: []
-            });
-
-            // Create subtle floating animation
-            gsap.to(particle, {
-                x: `+=${Math.random() * 100 - 50}`,
-                y: `+=${Math.random() * 100 - 50}`,
-                duration: Math.random() * 15 + 10,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: Math.random() * 5
-            });
-
-            // Add subtle pulsing effect
-            gsap.to(particle, {
-                scale: `+=${Math.random() * 0.3 + 0.1}`,
-                opacity: `+=${Math.random() * 0.3 + 0.1}`,
-                duration: Math.random() * 4 + 3,
-                repeat: -1,
-                yoyo: true,
-                ease: "sine.inOut",
-                delay: Math.random() * 2
-            });
-        });
-
-        // Create connection lines between nearby particles
-        const updateConnections = () => {
-            // Clear existing lines
-            svgCanvas.innerHTML = '';
-            
-            particleData.forEach((particle, i) => {
-                // Update particle position from DOM
-                const rect = particle.element.getBoundingClientRect();
-                const heroRect = heroSection.getBoundingClientRect();
-                particle.x = rect.left - heroRect.left + rect.width / 2;
-                particle.y = rect.top - heroRect.top + rect.height / 2;
-
-                // Check connections to other particles
-                for (let j = i + 1; j < particleData.length; j++) {
-                    const other = particleData[j];
-                    const distance = Math.sqrt(
-                        Math.pow(particle.x - other.x, 2) + 
-                        Math.pow(particle.y - other.y, 2)
-                    );
-
-                    // Connect particles within connection distance
-                    if (distance < 150) {
-                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                        line.setAttribute('x1', particle.x);
-                        line.setAttribute('y1', particle.y);
-                        line.setAttribute('x2', other.x);
-                        line.setAttribute('y2', other.y);
-                        
-                        // Calculate opacity based on distance
-                        const opacity = (150 - distance) / 150 * 0.4;
-                        line.setAttribute('stroke', `rgba(255, 255, 255, ${opacity})`);
-                        line.setAttribute('stroke-width', '1');
-                        line.style.filter = `drop-shadow(0 0 3px rgba(255, 255, 255, ${opacity * 0.5}))`;
-                        
-                        svgCanvas.appendChild(line);
-                    }
+            let gearPath = '';
+            for (let tooth = 0; tooth < teethCount; tooth++) {
+                const baseAngle = (tooth / teethCount) * 2 * Math.PI;
+                const toothAngle = (toothWidth / teethCount) * 2 * Math.PI;
+                
+                const angle1 = baseAngle - toothAngle/2;
+                const angle2 = baseAngle - toothAngle/4;
+                const angle3 = baseAngle + toothAngle/4;
+                const angle4 = baseAngle + toothAngle/2;
+                
+                const x1 = size/2 + outerRadius * Math.cos(angle1);
+                const y1 = size/2 + outerRadius * Math.sin(angle1);
+                const x2 = size/2 + toothRadius * Math.cos(angle2);
+                const y2 = size/2 + toothRadius * Math.sin(angle2);
+                const x3 = size/2 + toothRadius * Math.cos(angle3);
+                const y3 = size/2 + toothRadius * Math.sin(angle3);
+                const x4 = size/2 + outerRadius * Math.cos(angle4);
+                const y4 = size/2 + outerRadius * Math.sin(angle4);
+                
+                if (tooth === 0) {
+                    gearPath += `M ${x1} ${y1}`;
                 }
-            });
-
-            requestAnimationFrame(updateConnections);
-        };
-
-        // Start connection animation
-        updateConnections();
-
-        // Mouse interaction with network
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            const heroRect = heroSection.getBoundingClientRect();
-            mouseX = e.clientX - heroRect.left;
-            mouseY = e.clientY - heroRect.top;
-
-            // Create temporary connections to mouse
-            if (mouseX >= 0 && mouseX <= heroRect.width && mouseY >= 0 && mouseY <= heroRect.height) {
-                particleData.forEach((particle) => {
-                    const distance = Math.sqrt(
-                        Math.pow(mouseX - particle.x, 2) + Math.pow(mouseY - particle.y, 2)
-                    );
+                gearPath += ` L ${x2} ${y2} L ${x3} ${y3} L ${x4} ${y4}`;
+            }
+            gearPath += ' Z';
+            
+            // Technical blueprint gear with neutral MachFiveGroup palette - EXACT COPY
+            gear.innerHTML = `
+                <svg width="${size}" height="${size}" style="position: absolute; top: 0; left: 0;">
+                    <!-- Blueprint background circle -->
+                    <circle cx="${size/2}" cy="${size/2}" r="${size/2 - 2}" 
+                            fill="none" 
+                            stroke="rgba(200, 200, 200, 0.15)" 
+                            stroke-width="1" 
+                            stroke-dasharray="2,2"/>
                     
-                    if (distance < 100) {
-                        // Create mouse connection line
-                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                        line.setAttribute('x1', particle.x);
-                        line.setAttribute('y1', particle.y);
-                        line.setAttribute('x2', mouseX);
-                        line.setAttribute('y2', mouseY);
+                    <!-- Main gear teeth - clean technical lines -->
+                    <path d="${gearPath}" 
+                          fill="none" 
+                          stroke="rgba(220, 220, 220, 0.9)" 
+                          stroke-width="2"
+                          stroke-linejoin="round"/>
+                    
+                    <!-- Gear body outline -->
+                    <circle cx="${size/2}" cy="${size/2}" r="${outerRadius}" 
+                            fill="none" 
+                            stroke="rgba(180, 180, 180, 0.7)" 
+                            stroke-width="1.5"/>
+                    
+                    <!-- Technical construction lines -->
+                    <g stroke="rgba(150, 150, 150, 0.4)" stroke-width="0.5" fill="none" opacity="0.8">
+                        <!-- Centerlines -->
+                        <line x1="${size/2 - outerRadius * 1.2}" y1="${size/2}" x2="${size/2 + outerRadius * 1.2}" y2="${size/2}"/>
+                        <line x1="${size/2}" y1="${size/2 - outerRadius * 1.2}" x2="${size/2}" y2="${size/2 + outerRadius * 1.2}"/>
                         
-                        const opacity = (100 - distance) / 100 * 0.6;
-                        line.setAttribute('stroke', `rgba(221, 65, 36, ${opacity})`);
-                        line.setAttribute('stroke-width', '2');
-                        line.style.filter = `drop-shadow(0 0 5px rgba(221, 65, 36, ${opacity}))`;
-                        
-                        svgCanvas.appendChild(line);
+                        <!-- Pitch circles -->
+                        <circle cx="${size/2}" cy="${size/2}" r="${outerRadius * 0.8}" stroke-dasharray="3,3"/>
+                        <circle cx="${size/2}" cy="${size/2}" r="${outerRadius * 0.6}" stroke-dasharray="2,2"/>
+                    </g>
+                    
+                    <!-- Mounting hole pattern -->
+                    <g stroke="rgba(200, 200, 200, 0.8)" stroke-width="1" fill="none">
+                        ${Array.from({length: 6}, (_, idx) => {
+                            const angle = (idx / 6) * 2 * Math.PI;
+                            const boltX = size/2 + (innerRadius * 0.8) * Math.cos(angle);
+                            const boltY = size/2 + (innerRadius * 0.8) * Math.sin(angle);
+                            return `
+                                <circle cx="${boltX}" cy="${boltY}" r="3"/>
+                                <circle cx="${boltX}" cy="${boltY}" r="1.5" stroke-dasharray="1,1"/>
+                            `;
+                        }).join('')}
+                    </g>
+                    
+                    <!-- Center bore -->
+                    <circle cx="${size/2}" cy="${size/2}" r="${innerRadius}" 
+                            fill="none" 
+                            stroke="rgba(220, 220, 220, 0.9)" 
+                            stroke-width="2"/>
+                    
+                    <!-- Keyway -->
+                    <rect x="${size/2 - 2}" y="${size/2 - innerRadius}" width="4" height="${innerRadius * 0.3}" 
+                          fill="none" 
+                          stroke="rgba(180, 180, 180, 0.7)" 
+                          stroke-width="1"/>
+                    
+                    <!-- Hub detail -->
+                    <circle cx="${size/2}" cy="${size/2}" r="${innerRadius * 0.7}" 
+                            fill="none" 
+                            stroke="rgba(160, 160, 160, 0.6)" 
+                            stroke-width="1"/>
+                    
+                    <!-- Technical annotations -->
+                    <g stroke="rgba(170, 170, 170, 0.6)" stroke-width="0.5" fill="none">
+                        <!-- Dimension lines -->
+                        <line x1="${size/2 - outerRadius}" y1="${size/2 + outerRadius * 1.3}" x2="${size/2 + outerRadius}" y2="${size/2 + outerRadius * 1.3}"/>
+                        <line x1="${size/2 - outerRadius}" y1="${size/2 + outerRadius * 1.25}" x2="${size/2 - outerRadius}" y2="${size/2 + outerRadius * 1.35}"/>
+                        <line x1="${size/2 + outerRadius}" y1="${size/2 + outerRadius * 1.25}" x2="${size/2 + outerRadius}" y2="${size/2 + outerRadius * 1.35}"/>
+                    </g>
+                    
+                    <!-- Energy core - subtle neutral accent -->
+                    <circle cx="${size/2}" cy="${size/2}" r="${innerRadius * 0.4}" 
+                            fill="rgba(255, 255, 255, 0.05)" 
+                            stroke="rgba(240, 240, 240, 0.8)" 
+                            stroke-width="1.5">
+                        <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    
+                    <!-- Center point -->
+                    <circle cx="${size/2}" cy="${size/2}" r="2" 
+                            fill="rgba(230, 230, 230, 0.9)"/>
+                    
+                    <!-- Gear specifications text -->
+                    <text x="${size/2}" y="${size/2 + outerRadius * 1.6}" 
+                          font-family="monospace" 
+                          font-size="8" 
+                          fill="rgba(180, 180, 180, 0.7)" 
+                          text-anchor="middle">
+                        ${teethCount}T | M${Math.round(size/10)}
+                    </text>
+                    
+                    <!-- Drawing title block -->
+                    <g transform="translate(${size * 0.05}, ${size * 0.85})">
+                        <rect width="${size * 0.4}" height="${size * 0.12}" 
+                              fill="none" 
+                              stroke="rgba(160, 160, 160, 0.5)" 
+                              stroke-width="0.5"/>
+                        <text x="${size * 0.02}" y="${size * 0.06}" 
+                              font-family="monospace" 
+                              font-size="6" 
+                              fill="rgba(190, 190, 190, 0.8)">
+                            GEAR-${String(i).padStart(2, '0')}
+                        </text>
+                    </g>
+                </svg>
+            `;
+            
+            // Position with GSAP
+            gsap.set(gear, {
+                x: x,
+                y: y,
+                transformOrigin: 'center center'
+            });
+            
+            // Add rotation animation
+            gsap.to(gear, {
+                rotation: 360,
+                duration: 15 + i * 3,
+                repeat: -1,
+                ease: "none"
+            });
+            
+            machviveHero.appendChild(gear);
+        }
 
-                        // Attract particle slightly to mouse
-                        const force = (100 - distance) / 100 * 0.3;
-                        gsap.to(particle.element, {
-                            scale: 1 + force * 0.5,
-                            duration: 0.2,
-                            ease: "power2.out"
-                        });
-                    }
-                });
+        // Create energy beam canvas for MachVive hero
+        const machviveSvgCanvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        machviveSvgCanvas.style.position = 'absolute';
+        machviveSvgCanvas.style.top = '0';
+        machviveSvgCanvas.style.left = '0';
+        machviveSvgCanvas.style.width = '100%';
+        machviveSvgCanvas.style.height = '100%';
+        machviveSvgCanvas.style.zIndex = '4';
+        machviveSvgCanvas.style.pointerEvents = 'none';
+        machviveHero.appendChild(machviveSvgCanvas);
+
+        // Store gear data for MachVive
+        const machviveGearData = [];
+        const machviveGears = machviveHero.querySelectorAll('div[style*="position: absolute"]');
+        
+        machviveGears.forEach((gear, index) => {
+            if (gear.innerHTML.includes('svg')) {
+                const transform = gear.style.transform;
+                const translateMatch = transform.match(/translate3d\(([^,]+),\s*([^,]+),/);
+                if (translateMatch) {
+                    const x = parseFloat(translateMatch[1]);
+                    const y = parseFloat(translateMatch[2]);
+                    const size = parseInt(gear.style.width);
+                    
+                    machviveGearData.push({
+                        element: gear,
+                        x: x + size/2,
+                        y: y + size/2,
+                        size: size,
+                        type: index < 3 ? 'orbital' : 'floating'
+                    });
+                }
             }
         });
+
+        // Energy beam system for MachVive
+        let machviveFrameCount = 0;
+        const updateMachviveEnergyBeams = () => {
+            machviveFrameCount++;
+            
+            if (machviveFrameCount % 3 === 0) {
+                machviveSvgCanvas.innerHTML = '';
+                
+                // Technical connection lines from orbital gears to hub
+                machviveGearData.forEach((gear) => {
+                    if (gear.type === 'orbital') {
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        line.setAttribute('x1', gear.x);
+                        line.setAttribute('y1', gear.y);
+                        line.setAttribute('x2', machviveHubX);
+                        line.setAttribute('y2', machviveHubY);
+                        line.setAttribute('stroke', `rgba(200, 200, 200, 0.6)`);
+                        line.setAttribute('stroke-width', '1.5');
+                        
+                        line.style.strokeDasharray = '5 3';
+                        line.style.strokeDashoffset = (machviveFrameCount * 0.2) % 8;
+                        
+                        machviveSvgCanvas.appendChild(line);
+                    }
+                });
+                
+                // Mechanical linkage beams between gears
+                for (let i = 0; i < machviveGearData.length; i++) {
+                    const gear1 = machviveGearData[i];
+                    
+                    for (let j = i + 1; j < machviveGearData.length; j++) {
+                        const gear2 = machviveGearData[j];
+                        const distance = Math.sqrt(
+                            Math.pow(gear1.x - gear2.x, 2) + 
+                            Math.pow(gear1.y - gear2.y, 2)
+                        );
+                        
+                        if (distance < 350 && Math.random() < 0.25) {
+                            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                            line.setAttribute('x1', gear1.x);
+                            line.setAttribute('y1', gear1.y);
+                            line.setAttribute('x2', gear2.x);
+                            line.setAttribute('y2', gear2.y);
+                            
+                            line.setAttribute('stroke', `rgba(160, 160, 160, 0.4)`);
+                            line.setAttribute('stroke-width', '1');
+                            line.style.strokeDasharray = '3 2';
+                            
+                            machviveSvgCanvas.appendChild(line);
+                        }
+                    }
+                }
+            }
+
+            requestAnimationFrame(updateMachviveEnergyBeams);
+        };
+
+        updateMachviveEnergyBeams();
     }
+
 
     // Intersection Observer for fade-in animations
     const observerOptions = {
@@ -387,13 +519,35 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     });
 
+    // Staggered reveals for cards
+    const staggeredElements = document.querySelectorAll('.brand-card-enhanced, .tool-card-enhanced, .engagement-detail, .metric-card');
+    staggeredElements.forEach((el, index) => {
+        gsap.fromTo(el, 
+            { 
+                opacity: 0, 
+                y: 40,
+                scale: 0.95
+            },
+            { 
+                opacity: 1, 
+                y: 0,
+                scale: 1,
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                }
+            }
+        );
+    });
+
     // Observe other elements for animation
-    const animateElements = document.querySelectorAll('.about-section__content, .brand-card-enhanced, .tool-card-enhanced, .engagement-detail, .metric-card');
+    const animateElements = document.querySelectorAll('.about-section__content');
     animateElements.forEach(el => {
-        // Skip headings since we handle them separately
-        if (!el.querySelector('h3')) {
-            observer.observe(el);
-        }
+        observer.observe(el);
     });
 
     // Contact section text reveal animation
@@ -490,6 +644,112 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         );
+    });
+
+    // Animated Counters for Metrics
+    const animateCounters = () => {
+        const metrics = document.querySelectorAll('.metric-value');
+        
+        metrics.forEach(metric => {
+            const text = metric.textContent;
+            const isNumber = /^\d+/.test(text);
+            
+            if (isNumber) {
+                const finalNumber = parseInt(text);
+                const obj = { value: 0 };
+                
+                gsap.to(obj, {
+                    value: finalNumber,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: metric,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    },
+                    onUpdate: function() {
+                        metric.textContent = Math.round(obj.value) + text.replace(/^\d+/, '');
+                    }
+                });
+            } else if (text.includes('-')) {
+                // Handle ranges like "2-4" or "3-12"
+                const [start, end] = text.split('-').map(n => parseInt(n.trim()));
+                const obj = { start: 0, end: 0 };
+                
+                gsap.to(obj, {
+                    start: start,
+                    end: end,
+                    duration: 1.5,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: metric,
+                        start: "top 80%",
+                        toggleActions: "play none none none"
+                    },
+                    onUpdate: function() {
+                        metric.textContent = Math.round(obj.start) + '-' + Math.round(obj.end);
+                    }
+                });
+            }
+        });
+    };
+    
+    // Initialize counter animations
+    animateCounters();
+
+    // Interactive Brand Logo Animations
+    const brandLogos = document.querySelectorAll('.brand-card__logo');
+    brandLogos.forEach((logo, index) => {
+        const logoText = logo.querySelector('.brand-card__logo-text');
+        const logoMark = logo.querySelector('.brand-card__logo-mark');
+        
+        // Add click animation
+        logo.addEventListener('click', () => {
+            gsap.to(logo, {
+                scale: 0.95,
+                duration: 0.1,
+                yoyo: true,
+                repeat: 1,
+                ease: "power2.out"
+            });
+            
+            // Add sparkle effect
+            gsap.to(logoMark, {
+                rotationZ: "+=360",
+                duration: 0.8,
+                ease: "back.out(1.7)"
+            });
+        });
+        
+        // Enhanced hover entrance animation
+        logo.addEventListener('mouseenter', () => {
+            gsap.to(logoText, {
+                letterSpacing: "0.02em",
+                duration: 0.3,
+                ease: "power2.out"
+            });
+            
+            gsap.to(logoMark, {
+                y: -2,
+                duration: 0.3,
+                ease: "back.out(1.7)"
+            });
+        });
+        
+        // Reset on mouse leave
+        logo.addEventListener('mouseleave', () => {
+            gsap.to(logoText, {
+                letterSpacing: "0em",
+                duration: 0.3,
+                ease: "power2.out"
+            });
+            
+            gsap.to(logoMark, {
+                y: 0,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
     });
 
     console.log('GSAP loaded and configured with all plugins');
