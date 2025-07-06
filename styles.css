@@ -3107,8 +3107,6 @@ neodigm-widget *::-moz-selection {
         display: block;
         margin: 1rem auto;
     }
-        margin-bottom: 1rem;
-    }
 
     .contact__subtitle {
         font-size: 1rem;
