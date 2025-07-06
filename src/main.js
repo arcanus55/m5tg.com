@@ -204,16 +204,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Create gears for MachVive hero section
     const machviveHero = document.querySelector('.machvive-hero');
     if (machviveHero) {
-        console.log('MachVive hero found, creating gears...');
-        
         // Get container dimensions more reliably
         const containerWidth = machviveHero.offsetWidth;
         const containerHeight = machviveHero.offsetHeight;
         const machviveHubX = containerWidth / 2;
         const machviveHubY = containerHeight / 2;
-        
-        console.log(`Container dimensions: ${containerWidth} x ${containerHeight}`);
-        console.log(`Hub position: ${machviveHubX}, ${machviveHubY}`);
         
         // Create 6 gears for MachVive hero
         for (let i = 0; i < 6; i++) {
@@ -242,26 +237,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 size = 60;
             }
             
-            console.log(`Gear ${i}: position (${x}, ${y}), size ${size}`);
-            
-            // Ensure gears are properly styled and visible with bright debug styling
+            // Ensure gears are properly styled and visible
             gear.style.cssText = `
                 position: absolute;
                 left: 0px;
                 top: 0px;
                 width: ${size}px;
                 height: ${size}px;
-                z-index: 999;
+                z-index: 5;
                 opacity: 1;
                 pointer-events: none;
                 will-change: transform;
-                border: 2px solid red;
-                background: rgba(255, 0, 0, 0.1);
             `;
             
-            // Add a class for debugging
             gear.className = 'js-gear';
-            gear.setAttribute('data-gear-id', i);
             
             // Create the same SVG gear
             const teethCount = Math.floor(size / 6);
@@ -422,36 +411,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             machviveHero.appendChild(gear);
-            console.log(`Gear ${i} added to DOM`);
-            
-            // Create a simple test div to verify positioning works
-            const testDiv = document.createElement('div');
-            testDiv.style.cssText = `
-                position: absolute;
-                left: 0px;
-                top: 0px;
-                width: 20px;
-                height: 20px;
-                background: lime;
-                z-index: 1000;
-                border-radius: 50%;
-            `;
-            gsap.set(testDiv, {
-                x: x,
-                y: y
-            });
-            machviveHero.appendChild(testDiv);
         }
         
-        // Verify gears were created
-        setTimeout(() => {
-            const createdGears = machviveHero.querySelectorAll('.js-gear');
-            console.log(`Total gears created: ${createdGears.length}`);
-            createdGears.forEach((gear, index) => {
-                const rect = gear.getBoundingClientRect();
-                console.log(`Gear ${index} position on screen: ${rect.left}, ${rect.top}, visible: ${rect.width > 0 && rect.height > 0}`);
-            });
-        }, 1000);
 
         // Create energy beam canvas for MachVive hero
         const machviveSvgCanvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
