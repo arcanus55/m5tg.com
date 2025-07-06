@@ -2902,15 +2902,19 @@ neodigm-widget *::-moz-selection {
 
     /* Tool Icon Adjustments */
     .tool-icon:has(img) {
-        width: 500px;
-        height: 180px;
+        width: 80vw;
+        height: 30vw;
+        max-width: 800px;
+        max-height: 300px;
         margin-bottom: 1rem;
     }
     
     /* Brand Icon Adjustments */
     .brand-icon:has(img) {
-        width: 500px;
-        height: 180px;
+        width: 80vw;
+        height: 30vw;
+        max-width: 800px;
+        max-height: 300px;
         margin-bottom: 1rem;
     }
 
