@@ -201,14 +201,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Create gears for MachVive hero section
+    // Create gears for MachVive hero section with delay to ensure proper sizing
     const machviveHero = document.querySelector('.machvive-hero');
     if (machviveHero) {
-        // Get container dimensions more reliably
-        const containerWidth = machviveHero.offsetWidth;
-        const containerHeight = machviveHero.offsetHeight;
-        const machviveHubX = containerWidth / 2;
-        const machviveHubY = containerHeight / 2;
+        // Wait for layout to be complete before creating gears
+        setTimeout(() => {
+            // Get container dimensions more reliably
+            const containerWidth = machviveHero.offsetWidth;
+            const containerHeight = machviveHero.offsetHeight;
+            const machviveHubX = containerWidth / 2;
+            const machviveHubY = containerHeight / 2;
+            
+            console.log('Creating gears with dimensions:', containerWidth, 'x', containerHeight);
         
         // Create 6 gears for MachVive hero
         for (let i = 0; i < 6; i++) {
@@ -412,7 +416,6 @@ document.addEventListener('DOMContentLoaded', function() {
             
             machviveHero.appendChild(gear);
         }
-        
 
         // Create energy beam canvas for MachVive hero
         const machviveSvgCanvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -507,6 +510,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         updateMachviveEnergyBeams();
+        }, 500); // Wait 500ms for layout to complete
     }
 
 
