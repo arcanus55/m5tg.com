@@ -2773,6 +2773,16 @@ neodigm-widget *::-moz-selection {
         overflow: hidden;
     }
     
+    /* Hide gears on mobile to improve readability */
+    .machvive-hero .js-gear {
+        display: none !important;
+    }
+    
+    /* Make whiteboard more visible on mobile */
+    .machvive-hero::before {
+        opacity: 0.3 !important;
+    }
+    
     .machvive-hero::after {
         width: 100%;
         height: 100%;
@@ -2991,18 +3001,32 @@ neodigm-widget *::-moz-selection {
     .philosophy {
         padding: 4rem 1rem;
         padding-top: 8rem;
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Make whiteboard more visible in philosophy */
+    .philosophy::before {
+        opacity: 0.25 !important;
     }
 
     .philosophy__title {
         font-size: clamp(1.75rem, 6vw, 2.5rem);
         margin-bottom: 2rem;
         text-align: center;
+        position: relative;
+        z-index: 15;
+        background: rgba(13, 13, 13, 0.8);
+        padding: 1rem;
+        border-radius: 8px;
     }
 
     .philosophy__text {
         font-size: 1rem;
         line-height: 1.7;
         margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 15;
     }
 
     /* Contact Section */
