@@ -2757,7 +2757,6 @@ neodigm-widget *::-moz-selection {
     /* Base adjustments */
     body {
         font-size: 14px;
-        border: 5px solid red !important;
     }
 
     .container {
@@ -2918,8 +2917,6 @@ neodigm-widget *::-moz-selection {
         max-width: 800px;
         max-height: 300px;
         margin-bottom: 1rem;
-        border: 10px solid lime !important;
-        background: yellow !important;
     }
     
     /* Brand Icon Adjustments */
@@ -2929,8 +2926,6 @@ neodigm-widget *::-moz-selection {
         max-width: 800px;
         max-height: 300px;
         margin-bottom: 1rem;
-        border: 10px solid lime !important;
-        background: yellow !important;
     }
 
     .tool-logo-text {
