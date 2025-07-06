@@ -2766,11 +2766,12 @@ neodigm-widget *::-moz-selection {
 
     /* Hero Section */
     .machvive-hero {
-        padding: 40px 15px;
-        min-height: 70vh;
+        padding: 60px 20px;
+        min-height: 80vh;
         text-align: center;
         max-width: 100vw;
         overflow: hidden;
+        position: relative;
     }
     
     /* Hide gears on mobile to improve readability */
@@ -2778,26 +2779,31 @@ neodigm-widget *::-moz-selection {
         display: none !important;
     }
     
-    /* Make whiteboard more visible on mobile */
+    /* Make whiteboard more visible and properly sized on mobile */
     .machvive-hero::before {
-        opacity: 0.3 !important;
+        opacity: 0.25 !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-attachment: scroll !important;
     }
     
     .machvive-hero::after {
-        width: 100%;
-        height: 100%;
+        width: 90%;
+        height: 80%;
         transform: translate(-50%, -50%);
     }
 
     .machvive-title {
-        font-size: clamp(2rem, 8vw, 3rem);
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
+        font-size: clamp(2.2rem, 7vw, 3.5rem);
+        line-height: 1.3;
+        margin-bottom: 2rem;
+        font-weight: 300;
+        letter-spacing: -0.02em;
     }
 
     .machvive-title-line {
         display: block;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.3rem;
     }
 
     /* About Section */
@@ -2811,13 +2817,33 @@ neodigm-widget *::-moz-selection {
     }
 
     .about-section__title {
-        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
         margin-bottom: 1.5rem;
+        font-weight: 400;
+        line-height: 1.4;
     }
 
     .about-section__text {
         font-size: 1rem;
-        line-height: 1.6;
+        line-height: 1.7;
+        text-align: center;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    
+    .about-section__content h3 {
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+        font-weight: 400;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .about-section__content p {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: center;
+        max-width: 90%;
+        margin: 0 auto;
     }
 
     /* Masonry Items */
@@ -2852,7 +2878,7 @@ neodigm-widget *::-moz-selection {
     /* Brands and Tools */
     .brands-enhanced,
     .tools-enhanced {
-        padding: 4rem 1rem;
+        padding: 3rem 1rem;
     }
 
     .brands__header,
@@ -2861,10 +2887,30 @@ neodigm-widget *::-moz-selection {
         text-align: center;
         margin-bottom: 2rem;
     }
-
+    
     .brands__title,
     .tools__title {
-        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+        font-weight: 400;
+        margin-bottom: 0.5rem;
+    }
+    
+    .brands__subtitle,
+    .tools__subtitle {
+        font-size: 1rem;
+        line-height: 1.6;
+        opacity: 0.8;
+    }
+    
+    .brand-card__description,
+    .tool-card__description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    /* Remove duplicate rule - already defined above */
         text-align: center;
     }
 
@@ -2912,19 +2958,19 @@ neodigm-widget *::-moz-selection {
 
     /* Tool Icon Adjustments */
     .tool-icon:has(img) {
-        width: 80vw !important;
-        height: 30vw !important;
-        max-width: 800px;
-        max-height: 300px;
+        width: 60vw !important;
+        height: 20vw !important;
+        max-width: 400px;
+        max-height: 150px;
         margin-bottom: 1rem;
     }
     
     /* Brand Icon Adjustments */
     .brand-icon:has(img) {
-        width: 80vw !important;
-        height: 30vw !important;
-        max-width: 800px;
-        max-height: 300px;
+        width: 60vw !important;
+        height: 20vw !important;
+        max-width: 400px;
+        max-height: 150px;
         margin-bottom: 1rem;
     }
 
@@ -2999,26 +3045,28 @@ neodigm-widget *::-moz-selection {
 
     /* Philosophy Section */
     .philosophy {
-        padding: 4rem 1rem;
-        padding-top: 8rem;
+        padding: 3rem 1.5rem;
         position: relative;
         z-index: 10;
     }
     
-    /* Make whiteboard more visible in philosophy */
+    /* Make whiteboard subtle in philosophy */
     .philosophy::before {
-        opacity: 0.25 !important;
+        opacity: 0.15 !important;
+        background-size: contain !important;
+        background-position: center center !important;
+        background-attachment: scroll !important;
     }
 
     .philosophy__title {
-        font-size: clamp(1.75rem, 6vw, 2.5rem);
-        margin-bottom: 2rem;
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+        margin-bottom: 1.5rem;
         text-align: center;
         position: relative;
         z-index: 15;
-        background: rgba(13, 13, 13, 0.8);
-        padding: 1rem;
-        border-radius: 8px;
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--dark-text-primary);
     }
 
     .philosophy__text {
@@ -3027,15 +3075,38 @@ neodigm-widget *::-moz-selection {
         margin-bottom: 1.5rem;
         position: relative;
         z-index: 15;
+        text-align: center;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     /* Contact Section */
     .contact {
-        padding: 4rem 1rem;
+        padding: 3rem 1rem;
     }
 
     .contact__title {
-        font-size: clamp(1.75rem, 6vw, 2.5rem);
+        font-size: clamp(1.8rem, 5vw, 2.2rem);
+        font-weight: 400;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+    .contact__text {
+        font-size: 1rem;
+        line-height: 1.7;
+        text-align: center;
+        max-width: 90%;
+        margin: 0 auto 1.5rem auto;
+    }
+    
+    .contact__email {
+        font-size: 1.1rem;
+        text-align: center;
+        display: block;
+        margin: 1rem auto;
+    }
         margin-bottom: 1rem;
     }
 
