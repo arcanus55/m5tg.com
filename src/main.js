@@ -452,7 +452,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log(`Gear ${index} position on screen: ${rect.left}, ${rect.top}, visible: ${rect.width > 0 && rect.height > 0}`);
             });
         }, 1000);
-        }
 
         // Create energy beam canvas for MachVive hero
         const machviveSvgCanvas = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
