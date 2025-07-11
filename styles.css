@@ -2566,13 +2566,7 @@ neodigm-widget *::-moz-selection {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        #DD4124 25%, 
-        #23394e 50%, 
-        #DD4124 75%, 
-        transparent 100%);
-    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .footer__content {
