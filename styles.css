@@ -220,6 +220,110 @@ neodigm-widget *::-moz-selection {
     border-radius: 3px;
 }
 
+.nav__logo-img {
+    height: 60px;
+    width: auto;
+    transition: opacity 0.3s ease;
+    margin: -5px 0;
+}
+
+.nav__logo:hover .nav__logo-img {
+    opacity: 0.8;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.hero-logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-logo {
+    width: min(300px, 90%);
+    height: auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.hero-logo:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.hero-text-section {
+    text-align: left;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    margin: 0 0 0.5rem 0;
+    color: #fafafa;
+    line-height: 1.1;
+}
+
+.hero-subtitle {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+    color: #DD4124;
+    line-height: 1.1;
+}
+
+.hero-tagline {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 300;
+    margin: 0 0 1.5rem 0;
+    color: #fafafa;
+    line-height: 1.1;
+}
+
+.hero-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.4;
+}
+
+.hero-underline {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin-top: 4rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-text-section {
+        text-align: center;
+    }
+    
+    .hero-logo {
+        width: min(250px, 80%);
+        margin: 0 auto;
+    }
+}
+
 .nav__menu {
     display: flex;
     list-style: none;
@@ -284,7 +388,7 @@ neodigm-widget *::-moz-selection {
     justify-content: center;
 }
 
-/* Whiteboard background - very light with edge fade */
+/* Enhanced whiteboard background with better integration */
 .machvive-hero::before {
     content: '';
     position: absolute;
@@ -292,32 +396,38 @@ neodigm-widget *::-moz-selection {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('img/whiteboard.jpg');
-    background-size: cover;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(221, 65, 36, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.05) 0%, transparent 40%),
+        url('img/whiteboard.jpg');
+    background-size: 
+        100% 100%,
+        100% 100%,
+        cover;
     background-position: center;
     background-attachment: fixed;
-    opacity: 0.12;
-    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    opacity: 0.18;
+    mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
     pointer-events: none;
     z-index: 0;
 }
 
-/* Grid background pattern + spotlight effect */
+/* Enhanced spotlight effect */
 .machvive-hero::after {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 900px;
-    height: 500px;
+    width: 1200px;
+    height: 600px;
     background: radial-gradient(ellipse at center, 
-        rgba(255, 255, 255, 0.15) 0%, 
-        rgba(255, 255, 255, 0.10) 20%,
-        rgba(255, 255, 255, 0.06) 35%,
-        rgba(255, 255, 255, 0.03) 50%,
-        transparent 75%
+        rgba(255, 255, 255, 0.12) 0%, 
+        rgba(255, 255, 255, 0.08) 25%,
+        rgba(221, 65, 36, 0.03) 40%,
+        rgba(255, 255, 255, 0.04) 60%,
+        transparent 80%
     );
     pointer-events: none;
     z-index: 1;
@@ -337,48 +447,15 @@ neodigm-widget *::-moz-selection {
 }
 
 .machvive-content-section {
-    text-align: center;
     position: relative;
+    z-index: 2;
 }
 
 
-/* Central Control Hub - Main Gear for MachVive */
-.machvive-content-section::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    height: 400px;
-    transform: translate(-50%, -50%);
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><circle cx="200" cy="200" r="198" fill="none" stroke="rgba(180,180,180,0.15)" stroke-width="2" stroke-dasharray="4,4"/><g fill="none" stroke="rgba(220,220,220,0.7)" stroke-width="2"><circle cx="200" cy="200" r="170"/><circle cx="200" cy="200" r="140"/><circle cx="200" cy="200" r="110"/><circle cx="200" cy="200" r="80"/></g><g stroke="rgba(160,160,160,0.5)" stroke-width="1" fill="none"><line x1="200" y1="20" x2="200" y2="380"/><line x1="20" y1="200" x2="380" y2="200"/><line x1="59" y1="59" x2="341" y2="341"/><line x1="341" y1="59" x2="59" y2="341"/></g><g stroke="rgba(200,200,200,0.6)" stroke-width="1" fill="none">%3Cpath%20d%3D%22M%20200%2C30%20L%20210%2C40%20L%20190%2C40%20Z%22%2F%3E%3Cpath%20d%3D%22M%20370%2C200%20L%20360%2C210%20L%20360%2C190%20Z%22%2F%3E%3Cpath%20d%3D%22M%20200%2C370%20L%20190%2C360%20L%20210%2C360%20Z%22%2F%3E%3Cpath%20d%3D%22M%2030%2C200%20L%2040%2C190%20L%2040%2C210%20Z%22%2F%3E</g><text x="200" y="390" font-family="monospace" font-size="12" fill="rgba(180,180,180,0.6)" text-anchor="middle">MAIN-HUB-01</text></svg>');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;
-    z-index: -1;
-    animation: mainGearRotate 25s linear infinite;
-}
 
-.machvive-content-section::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 120px;
-    height: 120px;
-    transform: translate(-50%, -50%);
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><circle cx="60" cy="60" r="58" fill="none" stroke="rgba(220,220,220,0.8)" stroke-width="2"/><circle cx="60" cy="60" r="45" fill="none" stroke="rgba(200,200,200,0.6)" stroke-width="1.5"/><circle cx="60" cy="60" r="32" fill="none" stroke="rgba(180,180,180,0.5)" stroke-width="1"/><g stroke="rgba(200,200,200,0.7)" stroke-width="1" fill="none"><line x1="60" y1="10" x2="60" y2="110"/><line x1="10" y1="60" x2="110" y2="60"/></g><g fill="rgba(200,200,200,0.6)"><circle cx="60" cy="20" r="2"/><circle cx="100" cy="60" r="2"/><circle cx="60" cy="100" r="2"/><circle cx="20" cy="60" r="2"/></g><circle cx="60" cy="60" r="15" fill="rgba(255,255,255,0.1)" stroke="rgba(240,240,240,0.8)" stroke-width="2"><animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="2s" repeatCount="indefinite"/></circle><text x="60" y="115" font-family="monospace" font-size="6" fill="rgba(180,180,180,0.6)" text-anchor="middle">CORE</text></svg>');
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;
-    z-index: -1;
-    animation: coreEnergy 3s ease-in-out infinite;
-}
 
 .machvive-title {
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    display: none;
     font-weight: 200;
     letter-spacing: -0.03em;
     line-height: 1.1;
