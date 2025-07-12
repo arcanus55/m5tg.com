@@ -26,6 +26,7 @@
     --m5-accent: #DD4124;
     --m5-accent-hover: #C53A20;
     --m5-border: #404040;
+    --m5-blue: #23394e;
 }
 
 * {
@@ -230,6 +231,41 @@ neodigm-widget *::-moz-selection {
 .nav__logo:hover .nav__logo-img {
     opacity: 0.8;
 }
+
+.brand-blue {
+    color: var(--m5-blue);
+}
+
+.text-gray {
+    color: var(--m5-gray);
+}
+
+/* Fix white dots appearing next to section headings */
+.brands__header,
+.tools__header,
+.brands__title,
+.tools__title,
+.brands__header *,
+.tools__header *,
+.brands__title *,
+.tools__title * {
+    list-style: none;
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.brands__header::before,
+.tools__header::before,
+.brands__title::before,
+.tools__title::before,
+.brands__header *::before,
+.tools__header *::before,
+.brands__title *::before,
+.tools__title *::before {
+    content: "";
+    display: none;
+}
+
 
 .hero-grid {
     display: grid;
@@ -1242,12 +1278,7 @@ neodigm-widget *::-moz-selection {
 
 .brands-enhanced .particle,
 .tools-enhanced .particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: rgba(200, 200, 200, 0.3);
-    border-radius: 50%;
-    animation: float 20s infinite linear;
+    display: none;
 }
 
 .brands__header {
@@ -3027,11 +3058,20 @@ neodigm-widget *::-moz-selection {
     
     /* Brand Icon Adjustments */
     .brand-icon:has(img) {
-        width: 60vw !important;
-        height: 20vw !important;
-        max-width: 400px;
-        max-height: 150px;
-        margin-bottom: 1rem;
+        width: 280px !important;
+        height: 120px !important;
+        margin: 0 auto 1.5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .brand-icon img {
+        max-width: 100%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
     }
 
     .tool-logo-text {
@@ -3064,10 +3104,15 @@ neodigm-widget *::-moz-selection {
         gap: 2rem;
         margin-top: 3rem;
         margin-bottom: -2rem;
+        padding: 0 1rem;
     }
 
     .engagement-detail {
-        padding: 2rem;
+        padding: 2rem 1.5rem;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
     }
 
     .engagement-detail h3 {
@@ -3233,6 +3278,13 @@ neodigm-widget *::-moz-selection {
     .tool-logo-text {
         font-size: 1.5rem;
     }
+    
+    /* Brand Icon Adjustments for small screens */
+    .brand-icon:has(img) {
+        width: 240px !important;
+        height: 100px !important;
+        margin: 0 auto 1rem auto;
+    }
 
     .brands-enhanced,
     .tools-enhanced,
@@ -3258,7 +3310,16 @@ neodigm-widget *::-moz-selection {
     }
 
     .engagement-detail {
-        padding: 1.5rem;
+        padding: 1.5rem 1rem;
+        margin: 0;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .engagement-details {
+        padding: 0 0.5rem;
+        gap: 1.5rem;
     }
 
     .engagement-metrics {
