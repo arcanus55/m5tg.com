@@ -1404,8 +1404,8 @@ neodigm-widget *::-moz-selection {
 }
 
 .brand-icon:has(img) {
-    width: 400px;
-    height: 180px;
+    width: 500px;
+    height: 225px;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
