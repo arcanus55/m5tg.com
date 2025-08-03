@@ -1606,7 +1606,7 @@ neodigm-widget *::-moz-selection {
 .feature-icon svg {
     width: 20px;
     height: 20px;
-    stroke: var(--brand-color, #DD4124);
+    fill: var(--brand-color, #DD4124);
 }
 
 .feature-content h4 {
@@ -2000,7 +2000,7 @@ neodigm-widget *::-moz-selection {
 .tool-feature-icon svg {
     width: 20px;
     height: 20px;
-    stroke: var(--tool-color, #DD4124);
+    fill: var(--tool-color, #DD4124);
 }
 
 .tool-feature-content h4 {
