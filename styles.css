@@ -1407,14 +1407,14 @@ neodigm-widget *::-moz-selection {
 }
 
 .brand-icon:has(img) {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
     height: 225px;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 0.5rem auto;
 }
 
 .brand-icon svg {
@@ -1428,9 +1428,8 @@ neodigm-widget *::-moz-selection {
 }
 
 .brand-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    max-width: 90%;
+    max-height: 90%;
     opacity: 0.8;
     transition: all 0.3s ease;
 }
@@ -1854,6 +1853,31 @@ neodigm-widget *::-moz-selection {
     fill: white;
 }
 
+.in-development-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(243, 156, 18, 0.9);
+    color: white;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 10;
+    box-shadow: 0 4px 20px rgba(243, 156, 18, 0.3);
+}
+
+.in-development-badge svg {
+    width: 16px;
+    height: 16px;
+    fill: white;
+}
+
 .tool-card-enhanced:hover {
     transform: translateY(-8px) rotateY(-3deg) rotateX(1deg);
     box-shadow: 
@@ -1881,6 +1905,7 @@ neodigm-widget *::-moz-selection {
 .tool-header {
     padding: 3rem 3rem 0;
     position: relative;
+    text-align: center;
 }
 
 .tool-icon {
@@ -1888,28 +1913,31 @@ neodigm-widget *::-moz-selection {
     height: 60px;
     margin-bottom: 1.5rem;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .tool-icon:has(img) {
-    width: 550px;
+    width: 100%;
+    max-width: 550px;
     height: 250px;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 0.5rem auto;
 }
 
 .tool-icon-text {
-    width: 550px;
+    width: 100%;
+    max-width: 550px;
     height: 250px;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto 0.5rem auto;
+    text-align: center;
 }
 
 .tool-logo-text {
@@ -1917,9 +1945,11 @@ neodigm-widget *::-moz-selection {
     font-weight: 700;
     color: var(--dark-text-primary);
     text-align: center;
-    margin: 0;
+    margin: 0 auto;
     line-height: 1.1;
     letter-spacing: -0.02em;
+    display: block;
+    width: 100%;
 }
 
 .tool-icon svg {
@@ -1933,9 +1963,8 @@ neodigm-widget *::-moz-selection {
 }
 
 .tool-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    max-width: 90%;
+    max-height: 90%;
     opacity: 0.8;
     transition: all 0.3s ease;
 }
