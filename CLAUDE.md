@@ -128,5 +128,41 @@ The `index.html` file is approximately 25,000+ tokens. When reading the file pro
 - Use grep/search tools for specific content location
 - Consider the file's single-page architecture when making structural changes
 
+## Development Guidelines and Learnings
+
+### User Preferences & Communication Style
+- **Direct and concise**: User prefers brief, to-the-point responses
+- **Show, don't tell**: Focus on making changes rather than explaining them
+- **Listen carefully**: Pay close attention to specific requests - don't over-interpret
+- **Revert when needed**: If changes aren't working, be quick to revert and try a different approach
+
+### CSS and Layout Approach
+- **Test incrementally**: Make small changes and verify they work before proceeding
+- **Avoid over-engineering**: Simple solutions often work better than complex grid systems
+- **Preserve existing functionality**: When making changes, ensure existing features continue to work
+- **Be cautious with layout changes**: Major structural changes (like switching from vertical to horizontal layouts) need careful planning
+
+### Visual Design Principles
+- **Consistency matters**: Logo sizes should be consistent across similar sections
+- **Spacing is critical**: Pay attention to padding, margins, and alignment
+- **Full-width considerations**: When making elements full-width, ensure proper max-width constraints
+- **Grid backgrounds**: Match grid sizes across sections for visual consistency (90px grid used)
+
+### Development Workflow
+- **Git as safety net**: Use `git checkout` to quickly revert problematic changes
+- **Read before editing**: Always use Read tool before making edits to understand context
+- **Multiple edits**: Use MultiEdit for batch changes to the same file
+- **Check responsive**: Consider mobile and desktop views when making layout changes
+
+### Common Pitfalls to Avoid
+- **Don't assume complex is better**: Grid-based alignment systems can break existing layouts
+- **Don't change too much at once**: Incremental changes are easier to debug
+- **Don't ignore user feedback**: If user says something is broken, revert immediately
+- **Don't add features not requested**: Stick to what was asked for
+
 ## Memories to Memorize
-- To memorize
+- User prefers direct, action-oriented responses
+- Always test CSS changes incrementally
+- Revert quickly when changes break the layout
+- Logo sizes should be consistent across sections
+- Grid background pattern is 90px × 90px

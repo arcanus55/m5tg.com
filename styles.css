@@ -1324,6 +1324,7 @@ neodigm-widget *::-moz-selection {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    align-items: stretch;
 }
 
 @media (max-width: 900px) {
@@ -1354,6 +1355,8 @@ neodigm-widget *::-moz-selection {
     padding: 0;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     border-radius: 12px;
     /* Realistic glass shadows and reflections */
@@ -1388,7 +1391,7 @@ neodigm-widget *::-moz-selection {
 
 .brand-card-enhanced:nth-child(2) {
     --brand-color: #23394e;
-    --status-color: #F26B38;
+    --status-color: #2A7A4F;
 }
 
 .card-header {
@@ -1574,6 +1577,7 @@ neodigm-widget *::-moz-selection {
 
 .card-content {
     padding: 0 3rem 3rem;
+    flex: 1;
 }
 
 .brand-features {
@@ -1781,6 +1785,7 @@ neodigm-widget *::-moz-selection {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    align-items: stretch;
 }
 
 @media (max-width: 900px) {
@@ -1810,6 +1815,8 @@ neodigm-widget *::-moz-selection {
     padding: 0;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     border-radius: 16px;
     /* Realistic glass shadows and reflections */
@@ -1884,8 +1891,8 @@ neodigm-widget *::-moz-selection {
 }
 
 .tool-icon:has(img) {
-    width: 400px;
-    height: 180px;
+    width: 550px;
+    height: 250px;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -1894,9 +1901,9 @@ neodigm-widget *::-moz-selection {
     margin-right: auto;
 }
 
-.tool-icon:has(.tool-logo-text) {
-    width: 400px;
-    height: 180px;
+.tool-icon-text {
+    width: 550px;
+    height: 250px;
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -1950,6 +1957,7 @@ neodigm-widget *::-moz-selection {
 
 .tool-content {
     padding: 0 3rem 3rem;
+    flex: 1;
 }
 
 .tool-card__title {
