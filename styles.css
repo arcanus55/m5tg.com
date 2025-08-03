@@ -150,6 +150,104 @@ neodigm-widget *::-moz-selection {
     color: var(--m5-accent);
 }
 
+/* Dropdown Menu Styles */
+.nav__dropdown {
+    position: relative;
+}
+
+.nav__dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav__dropdown-arrow {
+    transition: transform 0.3s ease;
+}
+
+.nav__dropdown:hover .nav__dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.nav__dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--dark-bg-elevated);
+    border: 1px solid var(--dark-border-primary);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    min-width: 120px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav__dropdown:hover .nav__dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav__dropdown-menu li {
+    list-style: none;
+}
+
+.nav__dropdown-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--dark-text-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.nav__dropdown-link:hover {
+    background: var(--dark-bg-secondary);
+    color: var(--accent-orange);
+}
+
+/* Mobile dropdown styles */
+@media (max-width: 900px) {
+    .nav__dropdown-menu {
+        position: static;
+        background: var(--dark-bg-secondary);
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        min-width: auto;
+        opacity: 0;
+        visibility: hidden;
+        transform: none;
+        box-shadow: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .nav__dropdown.active .nav__dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        max-height: 200px;
+    }
+    
+    .nav__dropdown.active .nav__dropdown-arrow {
+        transform: rotate(180deg);
+    }
+    
+    .nav__dropdown-link {
+        padding: 0.75rem 2rem;
+        border-left: 3px solid transparent;
+    }
+    
+    .nav__dropdown-link:hover {
+        border-left-color: var(--accent-orange);
+    }
+}
+
 /* Scroll Progress Bar */
 .scroll-progress {
     position: fixed;

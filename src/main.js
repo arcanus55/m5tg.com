@@ -26,6 +26,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Dropdown menu functionality
+    const dropdownToggles = document.querySelectorAll('.nav__dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            const dropdown = this.closest('.nav__dropdown');
+            
+            // On mobile, toggle the active class
+            if (window.innerWidth <= 900) {
+                dropdown.classList.toggle('active');
+            }
+        });
+    });
+
     // Mobile menu toggle
     const navToggle = document.querySelector('.nav__toggle');
     const navMenu = document.querySelector('.nav__menu');
@@ -46,8 +60,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     navMenu.classList.remove('nav__menu--open');
                     document.body.classList.remove('menu-open');
                 }
-                // Close if clicking on a menu link
-                if (e.target.classList.contains('nav__link')) {
+                // Close if clicking on a menu link (but not dropdown toggles)
+                if (e.target.classList.contains('nav__link') && !e.target.classList.contains('nav__dropdown-toggle')) {
                     navToggle.classList.remove('nav__toggle--open');
                     navMenu.classList.remove('nav__menu--open');
                     document.body.classList.remove('menu-open');
