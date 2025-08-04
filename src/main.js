@@ -84,46 +84,47 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(document.body, { attributes: true });
     }
 
-    // Navbar scroll effect
+    // Optimized scroll handling with throttling
     const nav = document.querySelector('.nav');
-    let lastScrollY = window.scrollY;
+    const scrollProgress = document.getElementById('scrollProgress');
+    let ticking = false;
 
-    function updateNavbar() {
+    function updateScrollElements() {
         const currentScrollY = window.scrollY;
         
+        // Navbar scroll effect
         if (currentScrollY > 50) {
             nav.classList.add('nav--scrolled');
         } else {
             nav.classList.remove('nav--scrolled');
         }
         
-        lastScrollY = currentScrollY;
-    }
-
-    window.addEventListener('scroll', updateNavbar);
-
-    // Scroll Progress Bar
-    const updateScrollProgress = () => {
-        const scrollProgress = document.getElementById('scrollProgress');
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = scrollTop / docHeight;
-        
+        // Scroll Progress Bar
         if (scrollProgress) {
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = currentScrollY / docHeight;
             scrollProgress.style.transform = `scaleX(${scrollPercent})`;
         }
-    };
+        
+        ticking = false;
+    }
 
-    window.addEventListener('scroll', updateScrollProgress);
+    function requestScrollUpdate() {
+        if (!ticking) {
+            requestAnimationFrame(updateScrollElements);
+            ticking = true;
+        }
+    }
+
+    window.addEventListener('scroll', requestScrollUpdate, { passive: true });
 
     // Enhanced Multi-Layer Parallax System
     const heroBackground = document.querySelector('.hero-background');
     const heroOverlay = document.querySelector('.hero-overlay');
     const heroContent = document.querySelector('.hero__content');
-    const particles = document.querySelectorAll('.particle');
 
     if (heroBackground) {
-        // Background moves slower (furthest layer)
+        // Optimized parallax with reduced scrub values for better performance
         gsap.to(heroBackground, {
             yPercent: -15,
             ease: "none",
@@ -131,11 +132,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 trigger: ".hero",
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 1.5
+                scrub: 3,
+                invalidateOnRefresh: true
             }
         });
 
-        // Overlay moves at medium speed (middle layer)
         gsap.to(heroOverlay, {
             yPercent: -20,
             ease: "none",
@@ -143,11 +144,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 trigger: ".hero",
                 start: "top bottom", 
                 end: "bottom top",
-                scrub: 1
+                scrub: 2,
+                invalidateOnRefresh: true
             }
         });
 
-        // Content moves fastest (foreground layer)
         gsap.to(heroContent, {
             yPercent: -10,
             ease: "none",
@@ -155,7 +156,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 trigger: ".hero",
                 start: "top bottom",
                 end: "bottom top", 
-                scrub: 0.5
+                scrub: 1,
+                invalidateOnRefresh: true
             }
         });
     }
@@ -292,27 +294,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         );
 
-        // Add subtle floating animation to hero content
+        // Reduced floating animation for better performance
         gsap.to(heroContent, {
-            y: "+=10",
-            duration: 3,
+            y: "+=5",
+            duration: 4,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut"
         });
     }
 
-    // Enhanced Background Gradient Animation
-    const heroSection = document.querySelector('.hero');
-    if (heroSection) {
-        // Create dynamic gradient shift
-        gsap.to(heroSection, {
-            "--gradient-rotation": "360deg",
-            duration: 20,
-            repeat: -1,
-            ease: "none"
-        });
-    }
+    // Removed intensive gradient animation for better scroll performance
 
     // Enhanced animations for timeline stages
     const timelineStages = document.querySelectorAll('.timeline-stage');
