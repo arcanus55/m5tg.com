@@ -1856,7 +1856,7 @@ neodigm-widget *::-moz-selection {
 .tools-enhanced {
     padding: 6rem 2rem;
     position: relative;
-    overflow: hidden;
+    overflow: visible;
     background: var(--dark-bg-secondary);
 }
 
@@ -1939,21 +1939,9 @@ neodigm-widget *::-moz-selection {
     text-align: left;
 }
 
-.tools__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+.tools__content {
     max-width: 1200px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
-    align-items: stretch;
-}
-
-@media (max-width: 900px) {
-    .tools__grid {
-        grid-template-columns: 1fr;
-    }
 }
 
 .tool-card-enhanced {
@@ -2512,6 +2500,102 @@ neodigm-widget *::-moz-selection {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--m5-gray);
+}
+
+/* Tool Cards - List Layout */
+.tool-card-clean {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding: 3rem 0;
+}
+
+.tool-card-clean:first-child {
+    padding-top: 0;
+}
+
+.tool-logo {
+    flex: 0 0 35%;
+}
+
+.tool-logo img {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+}
+
+/* Specific size for Web Tool Toys logo */
+.tool-card-clean:nth-child(2) .tool-logo img {
+    max-width: 240px;
+}
+
+.tool-logo--text {
+    flex: 0 0 35%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.tool-logo--text span {
+    font-size: 4rem;
+    font-weight: 200;
+    color: #ffffff;
+    letter-spacing: -0.03em;
+}
+
+.tool-details {
+    flex: 1;
+}
+
+.tool-name {
+    font-size: 3rem;
+    font-weight: 200;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.tool-tagline {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.tool-highlights {
+    display: none;
+}
+
+.tool-action {
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-size: 1.125rem;
+    transition: all 0.2s ease;
+}
+
+.tool-action:hover {
+    color: #ffffff;
+}
+
+.tool-badge {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .tool-card-clean {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 2rem 0;
+    }
+
+    .tool-logo {
+        flex: none;
+    }
+
+    .tool-name {
+        font-size: 2rem;
+    }
 }
 
 /* Engagement Details */

@@ -390,38 +390,50 @@
             <div class="tools__content">
                 <!-- MachVive Card -->
                 <div class="tool-card-clean">
+                    <div class="tool-badge">Open Source</div>
                     <div class="tool-logo">
                         <img src="img/MachVive Logo.png" alt="MachVive" />
                     </div>
-                    <div class="tool-details">
-                        <h3 class="tool-name">MachVive</h3>
-                        <p class="tool-tagline">Lightning-fast vanilla JS framework for modern web apps</p>
-                        <a href="https://machvive.com" class="tool-action" target="_blank">Explore Framework →</a>
+                    <h3 class="tool-name">MachVive</h3>
+                    <p class="tool-tagline ripped-tape machvive-tape">Lightning-fast vanilla JS framework</p>
+                    <div class="tool-highlights">
+                        <span>200+ Components</span>
+                        <span>50ms Load Time</span>
+                        <span>Zero Dependencies</span>
                     </div>
+                    <a href="https://machvive.com" class="tool-action">Explore Framework</a>
                 </div>
 
                 <!-- Web Tool Toys Card -->
                 <div class="tool-card-clean">
-                    <div class="tool-logo">
-                        <img src="webtooltoys.png" alt="Web Tool Toys" />
+                    <div class="tool-badge tool-badge--dev">In Development</div>
+                    <div class="tool-logo tool-logo--text">
+                        <span>Web Tool Toys</span>
                     </div>
-                    <div class="tool-details">
-                        <h3 class="tool-name">Web Tool Toys</h3>
-                        <p class="tool-tagline">Smart widgets that drive conversions with real-time analytics</p>
-                        <a href="https://www.webtooltoys.com/" class="tool-action" target="_blank">Explore Tools →</a>
+                    <h3 class="tool-name">Web Tool Toys</h3>
+                    <p class="tool-tagline ripped-tape webtoys-tape">Smart widgets that drive conversions</p>
+                    <div class="tool-highlights">
+                        <span>50+ Widget Types</span>
+                        <span>2-Minute Setup</span>
+                        <span>GDPR Compliant</span>
                     </div>
+                    <a href="#" class="tool-action">Coming Soon</a>
                 </div>
 
                 <!-- Example: Future Tool -->
                 <div class="tool-card-clean">
+                    <div class="tool-badge tool-badge--dev">Coming Soon</div>
                     <div class="tool-logo tool-logo--text">
-                        <span>SSE</span>
+                        <span>M5 Analytics</span>
                     </div>
-                    <div class="tool-details">
-                        <h3 class="tool-name">Stream Sync Events</h3>
-                        <p class="tool-tagline">Instant real-time notifications for your app users, managed from one simple interface. Auto-sync for when users come online.</p>
-                        <a href="#" class="tool-action">Learn More →</a>
+                    <h3 class="tool-name">Analytics Suite</h3>
+                    <p class="tool-tagline ripped-tape analytics-tape">Privacy-first business analytics</p>
+                    <div class="tool-highlights">
+                        <span>Real-Time Metrics</span>
+                        <span>Privacy First</span>
+                        <span>Self-Hosted Option</span>
                     </div>
+                    <a href="#" class="tool-action">Learn More</a>
                 </div>
             </div>
         </div>

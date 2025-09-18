@@ -437,5 +437,43 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Tools Carousel Navigation
+    const toolsGrid = document.querySelector('.tools__grid');
+    const prevBtn = document.querySelector('.tools__nav--prev');
+    const nextBtn = document.querySelector('.tools__nav--next');
+
+    if (toolsGrid && prevBtn && nextBtn) {
+        const scrollAmount = 344; // card width (320px) + gap (24px)
+
+        prevBtn.addEventListener('click', () => {
+            toolsGrid.scrollBy({
+                left: -scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            toolsGrid.scrollBy({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        });
+
+        // Update button states based on scroll position
+        const updateButtonStates = () => {
+            const scrollLeft = toolsGrid.scrollLeft;
+            const maxScroll = toolsGrid.scrollWidth - toolsGrid.clientWidth;
+
+            prevBtn.style.opacity = scrollLeft <= 0 ? '0.3' : '1';
+            prevBtn.style.pointerEvents = scrollLeft <= 0 ? 'none' : 'auto';
+
+            nextBtn.style.opacity = scrollLeft >= maxScroll - 5 ? '0.3' : '1';
+            nextBtn.style.pointerEvents = scrollLeft >= maxScroll - 5 ? 'none' : 'auto';
+        };
+
+        toolsGrid.addEventListener('scroll', updateButtonStates);
+        updateButtonStates(); // Initial state
+    }
+
     console.log('GSAP loaded and configured with all plugins');
 });
