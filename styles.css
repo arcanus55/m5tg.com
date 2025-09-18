@@ -212,6 +212,69 @@ neodigm-widget *::-moz-selection {
 
 /* Mobile dropdown styles */
 @media (max-width: 900px) {
+    /* Navigation mobile adjustments */
+    .nav__container {
+        padding: 1rem;
+    }
+
+    .nav__logo-img {
+        height: 50px;
+    }
+
+    .nav__menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(80%, 320px);
+        height: 100vh;
+        background: var(--dark-bg-elevated);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 5rem 0 2rem;
+        transition: right 0.3s ease;
+        overflow-y: auto;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav__menu.active {
+        right: 0;
+    }
+
+    .nav__link {
+        width: 100%;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        border-bottom: 1px solid var(--dark-border-secondary);
+    }
+
+    .nav__toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        position: relative;
+    }
+
+    .nav__toggle span {
+        display: block;
+        width: 25px;
+        height: 2px;
+        background: var(--dark-text-primary);
+        transition: all 0.3s ease;
+    }
+
+    .nav__toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .nav__toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav__toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+    }
+
     .nav__dropdown-menu {
         position: static;
         background: var(--dark-bg-secondary);
@@ -227,22 +290,22 @@ neodigm-widget *::-moz-selection {
         overflow: hidden;
         transition: all 0.3s ease;
     }
-    
+
     .nav__dropdown.active .nav__dropdown-menu {
         opacity: 1;
         visibility: visible;
         max-height: 200px;
     }
-    
+
     .nav__dropdown.active .nav__dropdown-arrow {
         transform: rotate(180deg);
     }
-    
+
     .nav__dropdown-link {
         padding: 0.75rem 2rem;
         border-left: 3px solid transparent;
     }
-    
+
     .nav__dropdown-link:hover {
         border-left-color: var(--accent-orange);
     }
@@ -498,6 +561,8 @@ neodigm-widget *::-moz-selection {
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
     padding: 0.5rem;
 }
 
@@ -2455,7 +2520,7 @@ neodigm-widget *::-moz-selection {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 3rem;
     margin-top: 5rem;
-    margin-bottom: -4rem;
+    margin-bottom: 3rem;
     text-align: left;
     position: relative;
     z-index: 10;
@@ -3238,7 +3303,7 @@ neodigm-widget *::-moz-selection {
         grid-template-columns: 1fr;
         gap: 2rem;
         margin-top: 3rem;
-        margin-bottom: -2rem;
+        margin-bottom: 2rem;
         padding: 0 1rem;
     }
 
@@ -3248,6 +3313,8 @@ neodigm-widget *::-moz-selection {
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
+        overflow: visible;
+        position: relative;
     }
 
     .engagement-detail h3 {
@@ -3288,6 +3355,8 @@ neodigm-widget *::-moz-selection {
         padding: 3rem 1.5rem;
         position: relative;
         z-index: 10;
+        margin-top: 2rem;
+        min-height: auto;
     }
     
     /* Make whiteboard suitable for mobile in philosophy */
@@ -3703,18 +3772,439 @@ neodigm-widget *::-moz-selection {
         padding: 5px 16px 5px 12px;
         letter-spacing: 0.5px;
     }
-    
+
     .ripped-tape::after {
         border-width: 8px 0 8px 5px;
         right: -5px;
     }
-    
+
     .brand-card__title-wrapper,
     .tool-card__title-wrapper {
         margin-bottom: 0.75rem;
     }
-    
+
     .tool-card__title {
         font-size: 14px !important;
+    }
+}
+
+/* ==========================================
+   COMPREHENSIVE MOBILE RESPONSIVE STYLES
+   ========================================== */
+
+/* Tablet styles (768px - 900px) */
+@media (max-width: 900px) and (min-width: 769px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .brands__grid,
+    .tools__grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+/* Mobile styles (max-width: 768px) */
+@media (max-width: 768px) {
+    /* Base adjustments */
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        padding: 0 1.25rem;
+    }
+
+    .container--narrow {
+        padding: 0 1.25rem;
+    }
+
+    /* Section padding */
+    .section {
+        padding: 3rem 0;
+    }
+
+    .brands-enhanced,
+    .tools-enhanced {
+        padding: 3rem 0;
+    }
+
+    /* Hero section mobile */
+    .machvive-hero {
+        min-height: 85vh;
+        padding: 80px 0 2rem;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+
+    .hero-text-section {
+        text-align: center;
+    }
+
+    .hero-logo {
+        width: min(250px, 80%);
+        margin: 0 auto;
+        padding: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+    }
+
+    .hero-tagline {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
+
+    /* About sections mobile */
+    .about-section {
+        padding: 2rem 0;
+    }
+
+    .about-section__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-section__grid--reverse {
+        direction: ltr;
+    }
+
+    .about-section__content h3 {
+        font-size: clamp(1.75rem, 5vw, 2.5rem);
+        margin-bottom: 1rem;
+    }
+
+    .about-section__content p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Masonry grid mobile */
+    .masonry-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Brands and tools grids */
+    .brands__grid,
+    .tools__grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .brands__title,
+    .tools__title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    /* Card adjustments */
+    .brand-card-enhanced,
+    .tool-card-enhanced {
+        padding: 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .card-header,
+    .tool-header {
+        gap: 1rem;
+    }
+
+    .brand-icon img,
+    .tool-icon img {
+        max-width: 180px;
+    }
+
+    /* Stats grid mobile */
+    .card-stats,
+    .tool-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .stat-value,
+    .tool-stat-value {
+        font-size: 1.25rem;
+    }
+
+    .stat-label,
+    .tool-stat-label {
+        font-size: 0.75rem;
+    }
+
+    /* Features list mobile */
+    .brand-features,
+    .tool-features {
+        gap: 1rem;
+    }
+
+    .feature-item,
+    .tool-feature-item {
+        gap: 0.75rem;
+    }
+
+    .feature-content h4,
+    .tool-feature-content h4 {
+        font-size: 0.95rem;
+    }
+
+    .feature-content p,
+    .tool-feature-content p {
+        font-size: 0.85rem;
+    }
+
+    /* Engagement section mobile */
+    .engagement-model__title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .engagement-details {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    .engagement-detail h3 {
+        font-size: 1.5rem;
+    }
+
+    .engagement-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .metric-value {
+        font-size: 2rem;
+    }
+
+    /* Philosophy section mobile */
+    .philosophy__title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .philosophy__text {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Contact section mobile */
+    .contact__title {
+        font-size: clamp(2rem, 6vw, 3rem);
+    }
+
+    .contact__subtitle {
+        font-size: 1rem;
+    }
+
+    .contact__email {
+        font-size: 1.25rem;
+    }
+
+    /* Footer mobile */
+    .footer__content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer__column h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .footer__links {
+        font-size: 0.95rem;
+    }
+
+    .footer__bottom {
+        text-align: center;
+        padding: 1.5rem 1.25rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Small mobile styles (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Base typography */
+    body {
+        font-size: 14px;
+    }
+
+    .container,
+    .container--narrow {
+        padding: 0 1rem;
+    }
+
+    /* Hero adjustments */
+    .machvive-hero {
+        min-height: 75vh;
+    }
+
+    .hero-grid {
+        padding: 0 1rem;
+    }
+
+    .hero-logo {
+        width: min(200px, 85%);
+        padding: 1.25rem;
+    }
+
+    /* Sticky notes on mobile */
+    .masonry-item {
+        padding: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .masonry-item h4 {
+        font-size: 0.95rem;
+    }
+
+    .masonry-item p {
+        font-size: 0.85rem;
+    }
+
+    /* Cards on small screens */
+    .brand-card-enhanced,
+    .tool-card-enhanced {
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .brand-card__description,
+    .tool-card__description {
+        font-size: 0.9rem;
+    }
+
+    /* Stats on small screens */
+    .stat-item,
+    .tool-stat-item {
+        text-align: center;
+    }
+
+    .stat-value,
+    .tool-stat-value {
+        font-size: 1.1rem;
+    }
+
+    .stat-label,
+    .tool-stat-label {
+        font-size: 0.7rem;
+    }
+
+    /* Features on small screens */
+    .feature-icon,
+    .tool-feature-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .feature-metric,
+    .tool-feature-metric {
+        font-size: 0.75rem;
+    }
+
+    /* Engagement metrics 2x2 grid */
+    .engagement-metrics {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .metric-card {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .metric-value {
+        font-size: 1.75rem;
+    }
+
+    .metric-label {
+        font-size: 0.75rem;
+    }
+
+    /* Engagement details */
+    .engagement-detail {
+        padding: 1.5rem;
+    }
+
+    .engagement-detail h3 {
+        font-size: 1.25rem;
+    }
+
+    .engagement-detail ul {
+        font-size: 0.9rem;
+    }
+
+    /* Contact section */
+    .contact {
+        padding: 3rem 0;
+    }
+
+    .contact__email {
+        font-size: 1.1rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    /* Footer */
+    .footer__description {
+        font-size: 0.9rem;
+    }
+
+    /* Badges */
+    .open-source-badge,
+    .in-development-badge {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Landscape mobile adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    .machvive-hero {
+        min-height: 100vh;
+    }
+
+    .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+
+    .hero-text-section {
+        text-align: left;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase tap target sizes */
+    .nav__link,
+    .nav__dropdown-link {
+        padding: 1rem 1.5rem;
+    }
+
+    .brand-card__link,
+    .tool-card__link {
+        padding: 1rem 1.5rem;
+    }
+
+    .contact__email {
+        padding: 1rem 2rem;
+    }
+
+    /* Disable hover effects on touch */
+    .brand-card-enhanced:hover,
+    .tool-card-enhanced:hover,
+    .metric-card:hover,
+    .engagement-detail:hover {
+        transform: none;
     }
 }
