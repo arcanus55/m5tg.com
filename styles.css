@@ -2516,10 +2516,12 @@ neodigm-widget *::-moz-selection {
 
 .tool-logo {
     flex: 0 0 35%;
+    display: flex;
+    justify-content: center;
 }
 
 .tool-logo img {
-    width: 100%;
+    width: auto;
     max-width: 320px;
     height: auto;
 }
@@ -2533,7 +2535,7 @@ neodigm-widget *::-moz-selection {
     flex: 0 0 35%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .tool-logo--text span {
@@ -2541,6 +2543,30 @@ neodigm-widget *::-moz-selection {
     font-weight: 200;
     color: #ffffff;
     letter-spacing: -0.03em;
+}
+
+/* Specific styling for SSE logo */
+.tool-card-clean:nth-child(3) .tool-logo--text span {
+    font-weight: 700;
+    background: linear-gradient(135deg, #DD4124, #ff6b4a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 0.1em;
+    padding: 0.5rem 1rem;
+    border: 2px solid rgba(221, 65, 36, 0.3);
+    border-radius: 8px;
+    position: relative;
+}
+
+.tool-card-clean:nth-child(3) .tool-logo--text span::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, rgba(221, 65, 36, 0.2), rgba(255, 107, 74, 0.2));
+    border-radius: 8px;
+    z-index: -1;
+    filter: blur(10px);
 }
 
 .tool-details {
