@@ -2626,6 +2626,7 @@ neodigm-widget *::-moz-selection {
 .sse-text {
     font-size: 4.5rem;
     font-weight: 700;
+    color: #DD4124; /* Fallback color */
     background: linear-gradient(135deg, #DD4124, #ff6b4a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
