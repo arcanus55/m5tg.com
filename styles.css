@@ -530,7 +530,7 @@ neodigm-widget *::-moz-selection {
 
 /* Clean MachVive nav links */
 .nav__link {
-    color: #888;
+    color: #fafafa;
     text-decoration: none;
     font-size: 0.875rem;
     font-weight: 400;
@@ -540,7 +540,7 @@ neodigm-widget *::-moz-selection {
 }
 
 .nav__link:hover {
-    color: #fafafa;
+    color: var(--m5-orange);
 }
 
 /* GitHub link special styling */
@@ -2653,6 +2653,182 @@ neodigm-widget *::-moz-selection {
     line-height: 1.5;
 }
 
+/* Brand Cards - List Layout (matching Tools) */
+.brand-card-clean {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    padding: 4rem 0;
+}
+
+.brand-card-clean:first-child {
+    padding-top: 0;
+}
+
+.brand-logo {
+    flex: 0 0 35%;
+    display: flex;
+    justify-content: center;
+}
+
+.brand-logo img {
+    width: auto;
+    max-width: 320px;
+    height: auto;
+}
+
+.brand-details {
+    flex: 1;
+}
+
+.brand-name {
+    font-size: 3rem;
+    font-weight: 200;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.brand-description {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+}
+
+/* Brand action links - matching Tools section */
+.brand-action {
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-size: 1.125rem;
+    transition: all 0.2s ease;
+}
+
+.brand-action:hover {
+    color: #ffffff;
+}
+
+/* Brand Checkpoints */
+.brand-checkpoints {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.checkpoint {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+}
+
+.checkpoint-mark {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--m5-red), var(--m5-orange));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+}
+
+.checkpoint-content {
+    flex: 1;
+}
+
+.checkpoint-content h4 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+}
+
+.checkpoint-content p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.4;
+}
+
+/* Brand Cards Mobile Responsive */
+@media (max-width: 768px) {
+    .brand-card-clean {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 3rem 0;
+        align-items: center;
+    }
+
+    .brand-logo {
+        flex: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .brand-logo img {
+        max-width: 240px;
+        width: 80%;
+    }
+
+    /* M5 Marketing logo styling on mobile */
+    .brand-logo .brand-card__logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        justify-content: center;
+    }
+
+    .brand-details {
+        width: 100%;
+    }
+
+    .brand-name {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .brand-tagline {
+        font-size: 1.25rem;
+        text-align: center;
+    }
+
+    .brand-description {
+        text-align: center;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .brand-checkpoints {
+        flex-direction: column;
+        gap: 1.5rem;
+        max-width: 90%;
+        margin: 2rem auto;
+    }
+
+    .checkpoint {
+        text-align: left;
+    }
+
+    .brand-action {
+        display: block;
+        text-align: center;
+    }
+}
+
 .tool-highlights {
     display: none;
 }
@@ -2678,14 +2854,82 @@ neodigm-widget *::-moz-selection {
         text-align: center;
         gap: 2rem;
         padding: 2rem 0;
+        align-items: center;
     }
 
     .tool-logo {
         flex: none;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .tool-logo img {
+        max-width: 240px;
+        width: 80%;
+    }
+
+    /* SSE logo on mobile */
+    .sse-logo {
+        justify-content: center;
+    }
+
+    .tool-details {
+        width: 100%;
     }
 
     .tool-name {
         font-size: 2rem;
+        text-align: center;
+    }
+
+    .tool-tagline {
+        text-align: center;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .tool-action {
+        display: block;
+        text-align: center;
+    }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+    .brand-card-clean,
+    .tool-card-clean {
+        padding: 2rem 0;
+    }
+
+    .brand-name,
+    .tool-name {
+        font-size: 1.75rem;
+    }
+
+    .brand-tagline {
+        font-size: 1.1rem;
+    }
+
+    .brand-logo img,
+    .tool-logo img {
+        max-width: 200px;
+    }
+
+    .checkpoint-mark {
+        width: 24px;
+        height: 24px;
+        font-size: 0.875rem;
+    }
+
+    .checkpoint-content h4 {
+        font-size: 1rem;
+    }
+
+    .checkpoint-content p {
+        font-size: 0.875rem;
     }
 }
 
@@ -3012,6 +3256,105 @@ neodigm-widget *::-moz-selection {
     line-height: 1.6;
     margin-bottom: 1rem;
     color: var(--m5-gray);
+}
+
+/* Chicago Flag Design */
+.chicago-flag {
+    display: inline-block;
+    margin-left: 1rem;
+    vertical-align: middle;
+    animation: flagFadeIn 2s ease-out forwards, flagWave 8s ease-in-out infinite;
+    opacity: 0;
+    transform-origin: left center;
+    filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.3));
+}
+
+.chicago-flag svg {
+    display: block;
+    border: 2px solid rgba(179, 221, 242, 0.3);
+    border-radius: 3px;
+    vertical-align: middle;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.chicago-flag:hover svg {
+    border-color: rgba(179, 221, 242, 0.6);
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+@keyframes flagFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-10deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(2deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes flagWave {
+    0%, 100% {
+        transform: perspective(200px) rotateY(0deg);
+    }
+    25% {
+        transform: perspective(200px) rotateY(-3deg);
+    }
+    75% {
+        transform: perspective(200px) rotateY(3deg);
+    }
+}
+
+/* Animated Globe Icon */
+.globe-icon {
+    display: inline-block;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    animation: globeFadeIn 2s ease-out forwards, globeSpin 10s linear infinite;
+    opacity: 0;
+}
+
+.globe-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: #ff6b4a;
+    stroke-width: 1.5;
+    fill: none;
+    filter: drop-shadow(0 0 6px rgba(255, 107, 74, 0.6));
+}
+
+@keyframes globeFadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(0deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+@keyframes globeSpin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+@keyframes globePulse {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(255, 107, 74, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 16px rgba(255, 107, 74, 0.6));
+    }
 }
 
 .footer__column h4 {
