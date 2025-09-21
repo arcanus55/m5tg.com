@@ -214,6 +214,105 @@ document.addEventListener('DOMContentLoaded', function() {
         );
     });
 
+
+    // Animate brand logos and names on scroll
+    const brandCards = document.querySelectorAll('.brand-card-clean');
+    brandCards.forEach((card, index) => {
+        const logo = card.querySelector('.brand-logo');
+        const name = card.querySelector('.brand-name');
+
+        if (logo) {
+            gsap.fromTo(logo,
+                {
+                    opacity: 0,
+                    x: -50
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    delay: index * 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: logo,
+                        start: "top 85%",
+                        once: true
+                    }
+                }
+            );
+        }
+
+        if (name) {
+            gsap.fromTo(name,
+                {
+                    opacity: 0,
+                    x: 50
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    delay: index * 0.2 + 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: name,
+                        start: "top 85%",
+                        once: true
+                    }
+                }
+            );
+        }
+    });
+
+    // Animate tool logos and names on scroll
+    const toolCards = document.querySelectorAll('.tool-card-clean');
+    toolCards.forEach((card, index) => {
+        const logo = card.querySelector('.tool-logo');
+        const name = card.querySelector('.tool-name');
+
+        if (logo) {
+            gsap.fromTo(logo,
+                {
+                    opacity: 0,
+                    x: -50
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    delay: index * 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: logo,
+                        start: "top 85%",
+                        once: true
+                    }
+                }
+            );
+        }
+
+        if (name) {
+            gsap.fromTo(name,
+                {
+                    opacity: 0,
+                    x: 50
+                },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    delay: index * 0.2 + 0.2,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: name,
+                        start: "top 85%",
+                        once: true
+                    }
+                }
+            );
+        }
+    });
+
     // Staggered reveals for cards
     const staggeredElements = document.querySelectorAll('.brand-card-enhanced, .tool-card-enhanced, .engagement-detail, .metric-card');
     staggeredElements.forEach((el, index) => {
@@ -244,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
     animateElements.forEach(el => {
         observer.observe(el);
     });
+
 
     // Contact section text reveal animation
     const forwardText = document.querySelector('.forward-text');
