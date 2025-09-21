@@ -562,14 +562,115 @@ neodigm-widget *::-moz-selection {
         text-align: center;
         gap: 2rem;
     }
-    
+
     .hero-text-section {
         text-align: center;
     }
-    
+
     .hero-logo {
         width: min(250px, 80%);
         margin: 0 auto;
+    }
+
+    /* Improved mobile typography for hero */
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+        font-size: 2rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.75rem;
+    }
+}
+
+/* Global Mobile Typography Improvements */
+@media (max-width: 768px) {
+    /* Standard paragraph text */
+    p {
+        font-size: 1.0625rem;
+        line-height: 1.8;
+    }
+
+    /* Section titles */
+    h2 {
+        font-size: 2.25rem;
+    }
+
+    /* Subsection titles */
+    h3 {
+        font-size: 1.75rem;
+    }
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    /* Brand and tool names on mobile */
+    .brand-name,
+    .tool-name {
+        font-size: 2.25rem;
+    }
+
+    .brand-tagline,
+    .tool-tagline {
+        font-size: 1.125rem;
+    }
+
+    .brand-description,
+    .tool-tagline {
+        font-size: 1.0625rem;
+        line-height: 1.75;
+    }
+
+    /* Philosophy text */
+    .philosophy__text {
+        font-size: 1.0625rem;
+        line-height: 1.85;
+    }
+
+    /* Engagement details */
+    .engagement-detail p {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    /* Masonry items */
+    .masonry-item p {
+        font-size: 1rem;
+    }
+
+    /* Footer text */
+    .footer__description {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+    /* Even more uniform sizing for very small screens */
+    p, .philosophy__text, .engagement-detail p {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+
+    h2, .brands__title, .tools__title {
+        font-size: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.75rem;
+    }
+
+    .hero-tagline {
+        font-size: 1.5rem;
     }
 }
 
@@ -948,22 +1049,24 @@ neodigm-widget *::-moz-selection {
 
 @media (max-width: 768px) {
     .about-section__content h3 {
-        font-size: 2.25rem;  /* Smaller on tablets */
+        font-size: 2.5rem;  /* Bigger on tablets */
+        margin-bottom: 1.5rem;
     }
     .about-section__content p {
-        font-size: 1.1rem;  /* Increased from 1rem */
-        line-height: 1.85;  /* Slightly less on mobile for better use of space */
+        font-size: 1.125rem;  /* More readable size */
+        line-height: 1.9;
         letter-spacing: 0.015em;
     }
 }
 
 @media (max-width: 480px) {
     .about-section__content h3 {
-        font-size: 1.875rem;  /* Mobile size */
+        font-size: 2rem;  /* Bigger mobile size */
+        margin-bottom: 1.25rem;
     }
     .about-section__content p {
-        font-size: 1rem;  /* Increased from 0.95rem */
-        line-height: 1.8;  /* Balanced for small screens */
+        font-size: 1.0625rem;  /* Consistent readable size */
+        line-height: 1.85;
         letter-spacing: 0.01em;
     }
 }
