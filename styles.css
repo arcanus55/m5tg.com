@@ -2739,6 +2739,11 @@ neodigm-widget *::-moz-selection {
     height: auto;
 }
 
+/* Specific size for MachVive logo */
+.tool-card-clean:nth-child(1) .tool-logo img {
+    max-width: 380px;
+}
+
 /* Specific size for Web Tool Toys logo */
 .tool-card-clean:nth-child(2) .tool-logo img {
     max-width: 240px;
