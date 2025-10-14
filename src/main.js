@@ -1,19 +1,14 @@
-// Use GSAP from CDN (global variables)
-// Register plugins that are available
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
-// Initialize your existing JavaScript functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Smooth scrolling for navigation links
     const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
-                // Use GSAP for smooth scroll instead of native scrollTo
                 gsap.to(window, {
                     duration: 1,
                     scrollTo: {
@@ -26,21 +21,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Dropdown menu functionality
     const dropdownToggles = document.querySelectorAll('.nav__dropdown-toggle');
     dropdownToggles.forEach(toggle => {
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
             const dropdown = this.closest('.nav__dropdown');
-            
-            // On mobile, toggle the active class
+
             if (window.innerWidth <= 900) {
                 dropdown.classList.toggle('active');
             }
         });
     });
 
-    // Mobile menu toggle
     const navToggle = document.querySelector('.nav__toggle');
     const navMenu = document.querySelector('.nav__menu');
 
@@ -51,16 +43,13 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.toggle('menu-open');
         });
 
-        // Close menu when clicking on overlay or menu links
         document.addEventListener('click', function(e) {
             if (navMenu.classList.contains('nav__menu--open')) {
-                // Close if clicking outside the menu or on a menu link
                 if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
                     navToggle.classList.remove('nav__toggle--open');
                     navMenu.classList.remove('nav__menu--open');
                     document.body.classList.remove('menu-open');
                 }
-                // Close if clicking on a menu link (but not dropdown toggles)
                 if (e.target.classList.contains('nav__link') && !e.target.classList.contains('nav__dropdown-toggle')) {
                     navToggle.classList.remove('nav__toggle--open');
                     navMenu.classList.remove('nav__menu--open');
@@ -69,7 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Prevent body scroll when menu is open
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -84,28 +72,25 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(document.body, { attributes: true });
     }
 
-    // Optimized scroll handling with throttling
     const nav = document.querySelector('.nav');
     const scrollProgress = document.getElementById('scrollProgress');
     let ticking = false;
 
     function updateScrollElements() {
         const currentScrollY = window.scrollY;
-        
-        // Navbar scroll effect
+
         if (currentScrollY > 50) {
             nav.classList.add('nav--scrolled');
         } else {
             nav.classList.remove('nav--scrolled');
         }
-        
-        // Scroll Progress Bar
+
         if (scrollProgress) {
             const docHeight = document.documentElement.scrollHeight - window.innerHeight;
             const scrollPercent = currentScrollY / docHeight;
             scrollProgress.style.transform = `scaleX(${scrollPercent})`;
         }
-        
+
         ticking = false;
     }
 
@@ -118,21 +103,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     window.addEventListener('scroll', requestScrollUpdate, { passive: true });
 
-    // Enhanced Multi-Layer Parallax System
     const heroBackground = document.querySelector('.hero-background');
     const heroOverlay = document.querySelector('.hero-overlay');
     const heroContent = document.querySelector('.hero__content');
 
     if (heroBackground) {
-        // Optimized parallax with reduced scrub values for better performance
         gsap.to(heroBackground, {
             yPercent: -15,
             ease: "none",
+            force3D: true,
             scrollTrigger: {
                 trigger: ".hero",
                 start: "top bottom",
                 end: "bottom top",
-                scrub: 3,
+                scrub: 0.5,
                 invalidateOnRefresh: true
             }
         });
@@ -140,11 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.to(heroOverlay, {
             yPercent: -20,
             ease: "none",
+            force3D: true,
             scrollTrigger: {
                 trigger: ".hero",
-                start: "top bottom", 
+                start: "top bottom",
                 end: "bottom top",
-                scrub: 2,
+                scrub: 0.5,
                 invalidateOnRefresh: true
             }
         });
@@ -152,232 +137,205 @@ document.addEventListener('DOMContentLoaded', function() {
         gsap.to(heroContent, {
             yPercent: -10,
             ease: "none",
+            force3D: true,
             scrollTrigger: {
                 trigger: ".hero",
                 start: "top bottom",
-                end: "bottom top", 
-                scrub: 1,
+                end: "bottom top",
+                scrub: 0.5,
                 invalidateOnRefresh: true
             }
         });
     }
 
-
-
-    // Intersection Observer for fade-in animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Use GSAP for fade-in animation
-                gsap.fromTo(entry.target, 
-                    { 
-                        opacity: 0, 
-                        y: 30 
-                    },
-                    { 
-                        opacity: 1, 
-                        y: 0, 
-                        duration: 0.8, 
-                        ease: "power2.out" 
-                    }
-                );
-                entry.target.classList.add('fade-in');
-                observer.unobserve(entry.target);
+    gsap.fromTo('.about-section__content h3',
+        {
+            opacity: 0,
+            y: 20
+        },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            force3D: true,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 80%",
+                once: true
             }
-        });
-    }, observerOptions);
+        }
+    );
 
-    // Subtle animation for section headings
-    const sectionHeadings = document.querySelectorAll('.about-section__content h3');
-    sectionHeadings.forEach((heading, index) => {
-        gsap.fromTo(heading, 
-            { 
-                opacity: 0, 
-                y: 20 
-            },
-            { 
-                opacity: 1, 
-                y: 0, 
-                duration: 0.6, 
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: heading,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                }
+    gsap.fromTo('.brand-card-clean .brand-logo',
+        {
+            opacity: 0,
+            x: -50
+        },
+        {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            force3D: true,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#brands",
+                start: "top 80%",
+                once: true
             }
-        );
-    });
-
-
-    // Animate brand logos and names on scroll
-    const brandCards = document.querySelectorAll('.brand-card-clean');
-    brandCards.forEach((card, index) => {
-        const logo = card.querySelector('.brand-logo');
-        const name = card.querySelector('.brand-name');
-
-        if (logo) {
-            gsap.fromTo(logo,
-                {
-                    opacity: 0,
-                    x: -50
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.8,
-                    delay: index * 0.2,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: logo,
-                        start: "top 85%",
-                        once: true
-                    }
-                }
-            );
         }
+    );
 
-        if (name) {
-            gsap.fromTo(name,
-                {
-                    opacity: 0,
-                    x: 50
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.8,
-                    delay: index * 0.2 + 0.2,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: name,
-                        start: "top 85%",
-                        once: true
-                    }
-                }
-            );
-        }
-    });
-
-    // Animate tool logos and names on scroll
-    const toolCards = document.querySelectorAll('.tool-card-clean');
-    toolCards.forEach((card, index) => {
-        const logo = card.querySelector('.tool-logo');
-        const name = card.querySelector('.tool-name');
-
-        if (logo) {
-            gsap.fromTo(logo,
-                {
-                    opacity: 0,
-                    x: -50
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.8,
-                    delay: index * 0.2,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: logo,
-                        start: "top 85%",
-                        once: true
-                    }
-                }
-            );
-        }
-
-        if (name) {
-            gsap.fromTo(name,
-                {
-                    opacity: 0,
-                    x: 50
-                },
-                {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.8,
-                    delay: index * 0.2 + 0.2,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: name,
-                        start: "top 85%",
-                        once: true
-                    }
-                }
-            );
-        }
-    });
-
-    // Staggered reveals for cards
-    const staggeredElements = document.querySelectorAll('.brand-card-enhanced, .tool-card-enhanced, .engagement-detail, .metric-card');
-    staggeredElements.forEach((el, index) => {
-        gsap.fromTo(el, 
-            { 
-                opacity: 0, 
-                y: 40,
-                scale: 0.95
-            },
-            { 
-                opacity: 1, 
-                y: 0,
-                scale: 1,
-                duration: 0.6, 
-                delay: index * 0.1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                }
+    gsap.fromTo('.brand-card-clean .brand-name',
+        {
+            opacity: 0,
+            x: 50
+        },
+        {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            force3D: true,
+            stagger: 0.2,
+            delay: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#brands",
+                start: "top 80%",
+                once: true
             }
-        );
-    });
+        }
+    );
 
-    // Observe other elements for animation
-    const animateElements = document.querySelectorAll('.about-section__content');
-    animateElements.forEach(el => {
-        observer.observe(el);
-    });
+    gsap.fromTo('.tool-card-clean .tool-logo',
+        {
+            opacity: 0,
+            x: -50
+        },
+        {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            force3D: true,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#tools",
+                start: "top 80%",
+                once: true
+            }
+        }
+    );
 
+    gsap.fromTo('.tool-card-clean .tool-name',
+        {
+            opacity: 0,
+            x: 50
+        },
+        {
+            opacity: 1,
+            x: 0,
+            duration: 0.8,
+            force3D: true,
+            stagger: 0.2,
+            delay: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#tools",
+                start: "top 80%",
+                once: true
+            }
+        }
+    );
 
-    // Contact section text reveal animation
-    const forwardText = document.querySelector('.forward-text');
-    if (forwardText) {
-        const contactObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Use GSAP for text reveal animation
-                    gsap.fromTo(entry.target, 
-                        { 
-                            x: -100,
-                            opacity: 0
-                        },
-                        { 
-                            x: 0,
-                            opacity: 1,
-                            duration: 0.6,
-                            ease: "power2.out"
-                        }
-                    );
-                    entry.target.classList.add('animate');
-                    contactObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
+    gsap.fromTo('.engagement-detail',
+        {
+            opacity: 0,
+            y: 40,
+            scale: 0.95
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            force3D: true,
+            stagger: 0.15,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#engagement",
+                start: "top 80%",
+                once: true
+            }
+        }
+    );
 
-        contactObserver.observe(forwardText);
-    }
+    gsap.fromTo('.metric-card',
+        {
+            opacity: 0,
+            y: 40,
+            scale: 0.95
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            force3D: true,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".engagement-metrics",
+                start: "top 80%",
+                once: true
+            }
+        }
+    );
 
-    // Hero Title Animation on Load
+    gsap.fromTo('.about-section__content',
+        {
+            opacity: 0,
+            y: 30
+        },
+        {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            force3D: true,
+            stagger: 0.2,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: "#about",
+                start: "top 75%",
+                once: true
+            }
+        }
+    );
+
+    gsap.fromTo('.forward-text',
+        {
+            x: -100,
+            opacity: 0
+        },
+        {
+            x: 0,
+            opacity: 1,
+            duration: 0.6,
+            force3D: true,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".contact",
+                start: "top 70%",
+                once: true
+            }
+        }
+    );
+
     const heroTitleLines = document.querySelectorAll('.hero__title-line');
     if (heroTitleLines.length > 0) {
-        // Enhanced title entrance
-        gsap.fromTo(heroTitleLines, 
+        gsap.fromTo(heroTitleLines,
             {
                 opacity: 0,
                 y: 100,
@@ -388,162 +346,146 @@ document.addEventListener('DOMContentLoaded', function() {
                 y: 0,
                 rotationX: 0,
                 duration: 1.2,
+                force3D: true,
                 stagger: 0.3,
                 ease: "power3.out",
                 delay: 0.5
             }
         );
 
-        // Reduced floating animation for better performance
         gsap.to(heroContent, {
             y: "+=5",
             duration: 4,
+            force3D: true,
             repeat: -1,
             yoyo: true,
             ease: "sine.inOut"
         });
     }
 
-    // Removed intensive gradient animation for better scroll performance
-
-    // Enhanced animations for timeline stages
-    const timelineStages = document.querySelectorAll('.timeline-stage');
-    timelineStages.forEach((stage, index) => {
-        gsap.fromTo(stage,
-            {
-                opacity: 0,
-                y: 50,
-                scale: 0.8
-            },
-            {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: "back.out(1.7)",
-                scrollTrigger: {
-                    trigger: stage,
-                    start: "top 80%",
-                    toggleActions: "play none none none"
-                }
+    gsap.fromTo('.timeline-stage',
+        {
+            opacity: 0,
+            y: 50,
+            scale: 0.8
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            force3D: true,
+            stagger: 0.15,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+                trigger: ".timeline",
+                start: "top 80%",
+                once: true
             }
-        );
+        }
+    );
+
+    const metrics = document.querySelectorAll('.metric-value');
+
+    ScrollTrigger.create({
+        trigger: ".engagement-metrics",
+        start: "top 80%",
+        once: true,
+        onEnter: () => {
+            metrics.forEach(metric => {
+                const text = metric.textContent;
+                const isNumber = /^\d+/.test(text);
+
+                if (isNumber) {
+                    const finalNumber = parseInt(text);
+                    const obj = { value: 0 };
+
+                    gsap.to(obj, {
+                        value: finalNumber,
+                        duration: 1.5,
+                        ease: "power2.out",
+                        onUpdate: function() {
+                            metric.textContent = Math.round(obj.value) + text.replace(/^\d+/, '');
+                        }
+                    });
+                } else if (text.includes('-')) {
+                    const [start, end] = text.split('-').map(n => parseInt(n.trim()));
+                    const obj = { start: 0, end: 0 };
+
+                    gsap.to(obj, {
+                        start: start,
+                        end: end,
+                        duration: 1.5,
+                        ease: "power2.out",
+                        onUpdate: function() {
+                            metric.textContent = Math.round(obj.start) + '-' + Math.round(obj.end);
+                        }
+                    });
+                }
+            });
+        }
     });
 
-    // Animated Counters for Metrics
-    const animateCounters = () => {
-        const metrics = document.querySelectorAll('.metric-value');
-        
-        metrics.forEach(metric => {
-            const text = metric.textContent;
-            const isNumber = /^\d+/.test(text);
-            
-            if (isNumber) {
-                const finalNumber = parseInt(text);
-                const obj = { value: 0 };
-                
-                gsap.to(obj, {
-                    value: finalNumber,
-                    duration: 1.5,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: metric,
-                        start: "top 80%",
-                        toggleActions: "play none none none"
-                    },
-                    onUpdate: function() {
-                        metric.textContent = Math.round(obj.value) + text.replace(/^\d+/, '');
-                    }
-                });
-            } else if (text.includes('-')) {
-                // Handle ranges like "2-4" or "3-12"
-                const [start, end] = text.split('-').map(n => parseInt(n.trim()));
-                const obj = { start: 0, end: 0 };
-                
-                gsap.to(obj, {
-                    start: start,
-                    end: end,
-                    duration: 1.5,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: metric,
-                        start: "top 80%",
-                        toggleActions: "play none none none"
-                    },
-                    onUpdate: function() {
-                        metric.textContent = Math.round(obj.start) + '-' + Math.round(obj.end);
-                    }
-                });
-            }
-        });
-    };
-    
-    // Initialize counter animations
-    animateCounters();
-
-    // Interactive Brand Logo Animations
     const brandLogos = document.querySelectorAll('.brand-card__logo');
     brandLogos.forEach((logo, index) => {
         const logoText = logo.querySelector('.brand-card__logo-text');
         const logoMark = logo.querySelector('.brand-card__logo-mark');
-        
-        // Add click animation
+
         logo.addEventListener('click', () => {
             gsap.to(logo, {
                 scale: 0.95,
                 duration: 0.1,
+                force3D: true,
                 yoyo: true,
                 repeat: 1,
                 ease: "power2.out"
             });
-            
-            // Add sparkle effect
+
             gsap.to(logoMark, {
                 rotationZ: "+=360",
                 duration: 0.8,
+                force3D: true,
                 ease: "back.out(1.7)"
             });
         });
-        
-        // Enhanced hover entrance animation
+
         logo.addEventListener('mouseenter', () => {
             gsap.to(logoText, {
                 letterSpacing: "0.02em",
                 duration: 0.3,
                 ease: "power2.out"
             });
-            
+
             gsap.to(logoMark, {
                 y: -2,
                 duration: 0.3,
+                force3D: true,
                 ease: "back.out(1.7)"
             });
         });
-        
-        // Reset on mouse leave
+
         logo.addEventListener('mouseleave', () => {
             gsap.to(logoText, {
                 letterSpacing: "0em",
                 duration: 0.3,
                 ease: "power2.out"
             });
-            
+
             gsap.to(logoMark, {
                 y: 0,
                 duration: 0.3,
+                force3D: true,
                 ease: "power2.out"
             });
         });
     });
 
-    // Tools Carousel Navigation
     const toolsGrid = document.querySelector('.tools__grid');
     const prevBtn = document.querySelector('.tools__nav--prev');
     const nextBtn = document.querySelector('.tools__nav--next');
 
     if (toolsGrid && prevBtn && nextBtn) {
-        const scrollAmount = 344; // card width (320px) + gap (24px)
+        const scrollAmount = 344;
 
         prevBtn.addEventListener('click', () => {
             toolsGrid.scrollBy({
@@ -559,7 +501,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Update button states based on scroll position
         const updateButtonStates = () => {
             const scrollLeft = toolsGrid.scrollLeft;
             const maxScroll = toolsGrid.scrollWidth - toolsGrid.clientWidth;
@@ -572,8 +513,6 @@ document.addEventListener('DOMContentLoaded', function() {
         };
 
         toolsGrid.addEventListener('scroll', updateButtonStates);
-        updateButtonStates(); // Initial state
+        updateButtonStates();
     }
-
-    console.log('GSAP loaded and configured with all plugins');
 });
