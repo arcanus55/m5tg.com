@@ -525,20 +525,6 @@ neodigm-widget *::-moz-selection {
     }
 }
 
-/* Add a subtle pulse after animation completes for "All forward" */
-.stagger-3 {
-    animation: fadeInUp 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards,
-               subtlePulse 3s ease-in-out 2s infinite;
-}
-
-@keyframes subtlePulse {
-    0%, 100% {
-        transform: translateY(0) scale(1);
-    }
-    50% {
-        transform: translateY(-2px) scale(1.02);
-    }
-}
 
 .hero-description {
     font-size: clamp(1rem, 2vw, 1.2rem);
@@ -553,6 +539,31 @@ neodigm-widget *::-moz-selection {
     height: 1px;
     background: rgba(255, 255, 255, 0.2);
     margin-top: 4rem;
+}
+
+.hero-subbrands {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6rem;
+    margin-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.subbrand-logo {
+    height: 180px;
+    width: auto;
+    opacity: 0.9;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.subbrand-logo:hover {
+    opacity: 1;
+    transform: scale(1.08);
+}
+
+.subbrand-logo--machvive {
+    height: 220px;
 }
 
 /* Mobile responsive */
@@ -583,6 +594,10 @@ neodigm-widget *::-moz-selection {
 
     .hero-tagline {
         font-size: 1.75rem;
+    }
+
+    .hero-subbrands {
+        display: none;
     }
 }
 

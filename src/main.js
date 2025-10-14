@@ -352,16 +352,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 delay: 0.5
             }
         );
-
-        gsap.to(heroContent, {
-            y: "+=5",
-            duration: 4,
-            force3D: true,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut"
-        });
     }
+
+    gsap.fromTo('.subbrand-logo',
+        {
+            opacity: 0,
+            y: 20
+        },
+        {
+            opacity: 0.9,
+            y: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power2.out",
+            delay: 1.5
+        }
+    );
 
     gsap.fromTo('.timeline-stage',
         {
